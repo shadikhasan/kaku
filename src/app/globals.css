@@ -269,8 +269,8 @@ body{padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-i
   html:root .lesson-row-info { width:auto;min-width:0;flex:1; }
   html:root .lesson-number { width:2rem;height:2rem; }
   html:root .lesson-preview { flex-basis:100%;order:1;padding:0;justify-content:center;flex-wrap:wrap; }
-  html:root .script-tabs { display:flex;max-width:100%; }
-  html:root .script-tabs>button { min-width:0;flex:1;flex-wrap:wrap;padding:10px; }
+  html:root .script-tabs { display:flex;width:max-content;max-width:100%;flex-shrink:0; }
+  html:root .script-tabs>button { min-width:0;flex:1;flex-wrap:nowrap;white-space:nowrap;padding:10px; }
   html:root .library-toolbar { flex-wrap:wrap;gap:0; }
   html:root .library-toolbar>.search-field { flex:none;width:100%;max-width:none;margin-bottom:20px; }
   html:root .search-field { min-height:44px; }
@@ -284,7 +284,7 @@ body{padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-i
   html:root .history-list>div { flex-wrap:wrap; }
   html:root .history-list>div>div { min-width:6rem; }
   html:root :is(.setting-row,.reset-row) { flex-wrap:wrap;gap:16px; }
-  html:root :is(.setting-row>div,.reset-row>div) { flex:1 1 12rem;min-width:0; }
+  html:root :is(.setting-row>div:not(.language-switch),.reset-row>div) { flex:1 1 12rem;min-width:0; }
   html:root :is(.setting-row p,.reset-row p) { max-width:none; }
   html:root .setting-row select { max-width:100%;min-width:0;min-height:44px; }
   html:root .reset-row .danger-link { max-width:none;white-space:normal;text-align:left; }
