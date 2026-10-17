@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { characters } from '@/lib/content';
 import { useI18n } from './language-provider';
 import { usePwa } from './pwa-provider';
@@ -15,7 +16,16 @@ export function PwaSettings() {
   const [downloading, setDownloading] = useState(false);
   const [error, setError] = useState(false);
   const [instructions, setInstructions] = useState(false);
+  const [removing, setRemoving] = useState(false);
+  const [removeError, setRemoveError] = useState(false);
+  const removeDialog = useRef<HTMLDialogElement>(null);
   const abort = useRef<AbortController | null>(null);
+  const showInstall = useSearchParams().get('install') === '1';
+  useEffect(() => {
+    if (!showInstall) return;
+    setInstructions(true);
+    document.getElementById('pwa-heading')?.scrollIntoView({ block: 'start' });
+  }, [showInstall]);
   useEffect(() => {
     let cancelled = false;
     if ('caches' in window) void caches.open(AUDIO_CACHE).then(async cache => {
@@ -44,8 +54,14 @@ export function PwaSettings() {
     finally { setDownloading(false); pwa.busy.current = false; abort.current = null; }
   };
   const remove = async () => {
-    try { await caches.delete(AUDIO_CACHE); setCount(0); setError(false); }
-    catch { setError(true); }
+    setRemoving(true);
+    setRemoveError(false);
+    try {
+      await caches.delete(AUDIO_CACHE);
+      setCount(0); setError(false);
+      removeDialog.current?.close();
+    } catch { setRemoveError(true); }
+    finally { setRemoving(false); }
   };
   return <section className="settings-panel pwa-settings" aria-labelledby="pwa-heading">
     <h2 id="pwa-heading">{t('Kaku on your device')}</h2>
@@ -62,9 +78,22 @@ export function PwaSettings() {
     <p className="settings-description">{t('Played audio is saved automatically. Download all recordings to hear every kana offline.')}</p>
     <div className="backup-actions"><button className="button-secondary" disabled={!pwa.ready || !pwa.online || downloading || count === audioUrls.length} onClick={() => void download()}>{t(downloading ? 'Downloading…' : 'Download all audio')}</button>
       {downloading ? <button className="button-secondary" onClick={() => abort.current?.abort()}>{t('Cancel download')}</button>
-        : <button className="button-secondary" disabled={!count} onClick={() => void remove()}>{t('Remove downloaded audio')}</button>}</div>
+        : <button className="button-secondary" disabled={!count} onClick={() => { setRemoveError(false); removeDialog.current?.showModal(); }}>{t('Remove downloaded audio')}</button>}</div>
     {downloading && <progress aria-label={t('Audio download progress')} value={count} max={audioUrls.length} />}
     {error && <p role="alert">{t('Could not save audio. Check your connection and available storage, then retry. Saved recordings will be reused.')}</p>}
     <p className="settings-description">{t('Your browser may clear offline files and progress. Export a backup to keep your notebook safe.')}</p>
+    <dialog ref={removeDialog} className="modal" role="alertdialog" aria-labelledby="remove-audio-title" aria-describedby="remove-audio-description"
+      onCancel={event => { if (removing) event.preventDefault(); }}
+      onClick={event => { if (!removing && event.target === event.currentTarget) removeDialog.current?.close(); }}>
+      <div className="modal-inner">
+        <h2 id="remove-audio-title">{t('Remove downloaded audio?')}</h2>
+        <p id="remove-audio-description">{t('You will need an internet connection to play or download these recordings again. Your progress and settings will stay saved.')}</p>
+        {removeError && <p role="alert">{t('Could not remove audio. Please try again.')}</p>}
+        <div className="backup-actions">
+          <button className="button-secondary" autoFocus disabled={removing} onClick={() => removeDialog.current?.close()}>{t('Cancel')}</button>
+          <button className="button-danger" disabled={removing} onClick={() => void remove()}>{t(removing ? 'Removing…' : 'Remove audio')}</button>
+        </div>
+      </div>
+    </dialog>
   </section>;
 }

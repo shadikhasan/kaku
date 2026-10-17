@@ -24,6 +24,10 @@ Progress and preferences remain in IndexedDB; language remains in local storage.
 
 Settings provides a native Install button only when the browser provides `beforeinstallprompt`. Dismissal is respected for the current session. Manual installation instructions remain available, including Share → Add to Home Screen for iOS and Add to Dock for Safari on Mac. Standalone windows hide installation controls. New copy is translated into English and Bangla.
 
+On phones (up to 760px), the top More menu also provides Install Kaku. It opens the native prompt when available or opens the installation instructions in Settings. The five bottom tabs stay above the device safe area and disappear during writing practice; update notices and other floating controls sit above the tabs. Larger screens retain sidebar navigation.
+
+The phone header shows the Kaku brand, practice streak, and More menu. The streak is hidden during phone writing practice. Larger screens keep their date and streak. Language selection is available only in Settings on all screen sizes.
+
 A new worker waits until the user chooses **Update and reload**. This control is hidden during practice. Before activating, the waiting worker asks every open Kaku window whether reloading is safe; active practice, audio downloads, or an unresponsive tab block activation. Once approved, controlled windows reload on the controller change. If all windows close, the browser may naturally activate the waiting release on the next launch. Old core caches and the original `kana-studio-*` caches are cleaned at activation; previously played original audio is migrated when storage permits. No IndexedDB deletion or schema changes are part of the update.
 
 ## Automated checks

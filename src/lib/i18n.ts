@@ -2,6 +2,21 @@ export type Language = 'en' | 'bn';
 export type TranslationValues = Record<string, string | number>;
 
 export const bangla: Record<string, string> = {
+  'Remove downloaded audio?': 'ডাউনলোড করা অডিও সরাবে?',
+  'You will need an internet connection to play or download these recordings again. Your progress and settings will stay saved.': 'এই রেকর্ডিংগুলো আবার শুনতে বা ডাউনলোড করতে ইন্টারনেট লাগবে। তোমার অগ্রগতি ও সেটিংস সেভ থাকবে।',
+  'Could not remove audio. Please try again.': 'অডিও সরানো যায়নি। আবার চেষ্টা করো।',
+  'Cancel': 'বাতিল',
+  'Remove audio': 'অডিও সরাও',
+  'Removing…': 'সরানো হচ্ছে…',
+  'Home': 'হোম',
+  'Lessons': 'পাঠ',
+  'Library': 'অক্ষর',
+  'Progress': 'অগ্রগতি',
+  'More': 'আরও',
+  'Help': 'সাহায্য',
+  'More options': 'আরও বিকল্প',
+  'Main navigation': 'প্রধান নেভিগেশন',
+  'Kaku home': 'কাকু হোম',
   'Offline access is available in the production app.': 'প্রোডাকশন অ্যাপে অফলাইন সুবিধা পাওয়া যায়।',
   'App update': 'অ্যাপ আপডেট',
   'Finish practice in all open Kaku tabs, then try again.': 'খোলা সব কাকু ট্যাবে অনুশীলন শেষ করে আবার চেষ্টা করো।',

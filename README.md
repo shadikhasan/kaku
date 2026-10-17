@@ -11,11 +11,12 @@ Kaku (書く) means “to write” in Japanese. No account, API key, or applicat
 - **92 basic kana across 20 lessons:** 46 hiragana and 46 katakana.
 - **Three practice rounds:** follow an animated stroke guide, trace the character, then write from memory.
 - **Stroke feedback:** approximate checks for stroke position, shape, direction, and length, with undo, clear, hints, and replay.
-- **English and Bangla interface:** switch languages without losing the current writing stage or accepted strokes.
+- **English and Bangla interface:** choose your interface language in Settings; your preference is saved on this device.
 - **Readings and pronunciation:** Bengali pronunciation aids alongside romaji, with 46 recorded pronunciations shared between both scripts. One tap plays one pronunciation; no Japanese voice installation is needed.
 - **Progress and review:** daily goals, streaks, practice history, scheduled review, and custom character selections.
 - **Local storage and backups:** progress saved on the device, with JSON export, import, and reset controls.
 - **Desktop and mobile input:** mouse, touch, and stylus support, writing grids, and reduced-motion settings.
+- **Phone navigation:** five bottom tabs, a compact Settings/Help/Install menu, and more writing space during practice. Larger screens use the sidebar.
 - **Installable PWA:** add Kaku to your home screen or desktop from Settings or your browser.
 - **Offline practice:** all lessons, practice screens, and progress work offline after setup. Download all 46 pronunciations in Settings, or let recordings cache as you play them.
 
@@ -67,7 +68,7 @@ The stroke checker is a heuristic teaching aid that compares the known lesson ta
 
 ### Language and readings
 
-Use **EN / বাংলা** in the header or Settings to change the interface language. Menus, instructions, feedback, vocabulary meanings, dates, and counts are localized. Japanese characters and stroke order stay the same.
+Use **Settings → Interface language → EN / বাংলা** to change the interface language. Menus, instructions, feedback, vocabulary meanings, dates, and counts are localized. Japanese characters and stroke order stay the same.
 
 Bengali pronunciation aids and romaji appear together in both interface languages: `আ (a)`, `শি (shi)`, `কা (ka)`. Search the character library using Japanese, Bengali pronunciation, or romaji. Bengali spellings are approximate aids; Japanese audio is the pronunciation reference.
 

@@ -1,11 +1,18 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 import data from '../../src/data/kana.json' with { type: 'json' };
+
+async function switchLanguage(page: Page, language: 'en' | 'bn') {
+  const previous = page.url();
+  await page.goto('/settings/');
+  await page.locator(`.language-switch button[lang="${language}"]`).click();
+  if (new URL(previous).pathname !== '/settings/') await page.goto(previous);
+}
 
 test('Bangla preference persists, both script tabs work, and every page fits', async ({ page }, info) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/');
-  await page.locator('header').getByRole('button', { name: 'Switch to Bangla' }).click();
+  await switchLanguage(page, 'bn');
   await expect(page.locator('html')).toHaveAttribute('lang', 'bn');
   await expect(page.getByRole('heading', { name: 'শেখার নতুন শুরু এখানেই.' })).toBeVisible();
   await page.locator('.page-enter').evaluate(element => element.getAnimations().forEach(animation => animation.finish()));
@@ -31,7 +38,7 @@ test('Bangla preference persists, both script tabs work, and every page fits', a
       await expect(page.locator('.character-tile').first()).toContainText('ア');
     }
   }
-  await page.locator('header').getByRole('button', { name: 'ইংরেজিতে দেখো' }).click();
+  await switchLanguage(page, 'en');
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.getByRole('heading', { name: 'Your practice, your way.' })).toBeVisible();
   await page.reload();
@@ -39,12 +46,12 @@ test('Bangla preference persists, both script tabs work, and every page fits', a
   expect(errors).toEqual([]);
 });
 
-test('switching language during writing preserves strokes, feedback, and saved progress', async ({ page }, info) => {
+test('the language chosen in Settings applies to writing and saved progress', async ({ page }, info) => {
   const character = data.find(c => c.symbol === 'い')!;
   await page.goto(`/practice/?lesson=hiragana-0&characters=${character.id}`);
   await expect(page.locator('main h1')).toHaveText('Write “ই (i)”');
   await expect(page.locator('.reference-reading')).toHaveText('ই (i)');
-  await page.locator('header').getByRole('button', { name: 'Switch to Bangla' }).click();
+  await switchLanguage(page, 'bn');
   await expect(page.locator('main h1')).toHaveText('“ই (i)” লেখো');
   for (let stage = 0; stage < 3; stage++) {
     await expect(page.locator('.practice-stage-tabs .active')).toContainText(['স্ট্রোক গাইড', 'ট্রেস গাইড', 'মনে করে লেখা'][stage]);
@@ -65,14 +72,6 @@ test('switching language during writing preserves strokes, feedback, and saved p
       await page.mouse.up();
       await expect(page.locator('.stroke-status i.complete')).toHaveCount(strokeIndex + 1);
       if (stage === 0 && strokeIndex === 0) {
-        await expect(page.locator('.writing-feedback')).toContainText('সুন্দর স্ট্রোক');
-        await page.locator('header').getByRole('button', { name: 'ইংরেজিতে দেখো' }).click();
-        await expect(page.locator('main h1')).toHaveText('Write “ই (i)”');
-        await expect(page.locator('.reference-reading')).toHaveText('ই (i)');
-        await expect(page.locator('.stroke-status i.complete')).toHaveCount(1);
-        await expect(page.locator('.writing-feedback')).toContainText('Lovely stroke');
-        await page.locator('header').getByRole('button', { name: 'Switch to Bangla' }).click();
-        await expect(page.locator('.stroke-status i.complete')).toHaveCount(1);
         await page.locator('.page-enter').evaluate(element => element.getAnimations().forEach(animation => animation.finish()));
         await page.screenshot({ path: `test-results/bangla-practice-${info.project.name}.png`, fullPage: true });
       }
@@ -82,7 +81,7 @@ test('switching language during writing preserves strokes, feedback, and saved p
   await expect(page.locator('.result-stats')).toContainText('১সাহায্য ছাড়া লিখেছ');
   await page.goto('/progress/');
   await expect(page.locator('.stat-card').first().locator('strong')).toHaveText('১');
-  await page.locator('header').getByRole('button', { name: 'ইংরেজিতে দেখো' }).click();
+  await switchLanguage(page, 'en');
   await expect(page.locator('.stat-card').first().locator('strong')).toHaveText('1');
   await page.reload();
   await expect(page.locator('.stat-card').first().locator('strong')).toHaveText('1');
@@ -93,7 +92,8 @@ test('Bengali and romaji readings stay together in the library across language c
   await page.getByRole('textbox', { name: 'Search characters' }).fill('শি');
   await expect(page.locator('.character-tile')).toHaveCount(1);
   await expect(page.locator('.character-tile')).toContainText('শি (shi)');
-  await page.locator('header').getByRole('button', { name: 'Switch to Bangla' }).click();
+  await switchLanguage(page, 'bn');
+  await page.getByRole('textbox').fill('shi');
   await expect(page.locator('.character-tile')).toHaveCount(1);
   await expect(page.locator('.character-tile')).toContainText('শি (shi)');
   await page.locator('.character-tile').click();

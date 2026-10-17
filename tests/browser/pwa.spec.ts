@@ -36,8 +36,7 @@ test('manifest icons have real dimensions and the app is ready before visiting o
   await expect(page.getByText('Ready offline: lessons, practice, and progress.')).toBeVisible();
   await context.setOffline(true);
   // Visit routes that were never loaded in this browser, including client navigation.
-  if (info.project.name === 'mobile') await page.getByRole('button', { name: 'Open navigation' }).click();
-  await page.getByRole('link', { name: 'My lessons', exact: true }).click();
+  await page.getByRole('link', { name: info.project.name === 'mobile' ? 'Lessons' : 'My lessons', exact: true }).click();
   await expect(page.locator('.lesson-row')).toHaveCount(10);
   await page.goto('/practice/?lesson=katakana-0&characters=030a2');
   await expect(page.locator('canvas')).toBeVisible();
@@ -87,6 +86,12 @@ test('all audio can be downloaded, replayed offline with ranges, and removed wit
     return keys.length === 46;
   })).toBe(true);
   await page.getByRole('button', { name: 'Remove downloaded audio' }).click();
+  const confirmation = page.getByRole('alertdialog', { name: 'Remove downloaded audio?' });
+  await expect(confirmation).toBeVisible();
+  await confirmation.getByRole('button', { name: 'Cancel', exact: true }).click();
+  await expect(page.getByText('46 of 46 recordings saved.')).toBeVisible();
+  await page.getByRole('button', { name: 'Remove downloaded audio' }).click();
+  await confirmation.getByRole('button', { name: 'Remove audio', exact: true }).click();
   await expect(page.getByText('0 of 46 recordings saved.')).toBeVisible();
   await page.reload();
   await expect(page.getByLabel('Daily character goal')).toHaveValue('15');

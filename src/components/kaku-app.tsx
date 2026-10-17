@@ -7,21 +7,22 @@ import { useI18n, LanguageSwitcher } from './language-provider';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowDownToLine, ArrowRight, ArrowUpRight, BookOpen, Check, ChevronRight, CircleHelp, Flame, Flower2, Globe2, LayoutGrid, Leaf, Menu, PenLine, RotateCcw, Search, Settings2, ShieldCheck, Target, TrendingUp, Upload, Volume2, X } from 'lucide-react';
+import { ArrowDownToLine, ArrowRight, ArrowUpRight, BookOpen, Check, ChevronRight, CircleHelp, Flame, Flower2, Globe2, LayoutGrid, Leaf, PenLine, RotateCcw, Search, Settings2, ShieldCheck, Target, TrendingUp, Upload, Volume2, X } from 'lucide-react';
 import { characters, lessons } from '@/lib/content';
 import { dayKey, streakForDays } from '@/lib/handwriting';
 import { db, defaultSettings, readProgress } from '@/lib/storage';
 import type { Attempt, Character, Lesson, Script, Settings, View } from '@/lib/types';
 import Practice from './practice';
 import { PwaSettings } from './pwa-settings';
+import { MobileMenu } from './mobile-menu';
 import { stopPronunciation, speakCharacter } from '@/lib/speech';
 
 const navigation = [
-  { view: 'overview', label: 'Overview', icon: LayoutGrid, href: '/' },
-  { view: 'lessons', label: 'My lessons', icon: BookOpen, href: '/lessons/' },
-  { view: 'library', label: 'Character library', icon: Globe2, href: '/library/' },
-  { view: 'review', label: 'Review', icon: RotateCcw, href: '/review/' },
-  { view: 'progress', label: 'My progress', icon: TrendingUp, href: '/progress/' },
+  { view: 'overview', label: 'Overview', mobileLabel: 'Home', icon: LayoutGrid, href: '/' },
+  { view: 'lessons', label: 'My lessons', mobileLabel: 'Lessons', icon: BookOpen, href: '/lessons/' },
+  { view: 'library', label: 'Character library', mobileLabel: 'Library', icon: Globe2, href: '/library/' },
+  { view: 'review', label: 'Review', mobileLabel: 'Review', icon: RotateCcw, href: '/review/' },
+  { view: 'progress', label: 'My progress', mobileLabel: 'Progress', icon: TrendingUp, href: '/progress/' },
 ] as const;
 
 export default function KakuApp({ initialView = 'overview' }: { initialView?: View }) {
@@ -39,7 +40,6 @@ function KakuAppContent({ initialView }: { initialView: View }) {
   const [storageError, setStorageError] = useState(false);
   const [script, setScript] = useState<Script>('hiragana');
   const [search, setSearch] = useState('');
-  const [menuOpen, setMenuOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
   const [notice, setNotice] = useState('');
   const [selection, setSelection] = useState<string[]>([]);
@@ -58,7 +58,7 @@ function KakuAppContent({ initialView }: { initialView: View }) {
   useEffect(() => stopPronunciation, []);
   useEffect(() => { setDetailAudioError(''); return stopPronunciation; }, [detail]);
   useEffect(() => { if (!settings.sound) stopPronunciation(); }, [settings.sound]);
-  useEffect(() => { setMenuOpen(false); setDetail(null); }, [initialView]);
+  useEffect(() => { setDetail(null); }, [initialView]);
   useEffect(() => {
     if (!notice) return;
     const timer = setTimeout(() => setNotice(''), 4500);
@@ -132,16 +132,15 @@ function KakuAppContent({ initialView }: { initialView: View }) {
   const dateLabel = date?.toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric' });
   const title = initialView === 'practice' ? 'Writing practice' : initialView === 'settings' ? 'Settings' : navigation.find(n => n.view === initialView)?.label ?? 'Overview';
 
-  return <div className={`app-shell ${settings.reducedMotion ? 'reduce-motion' : ''}`}>
-    {menuOpen && <button className="sidebar-backdrop" onClick={() => setMenuOpen(false)} aria-label={t("Close navigation")} />}
-    <aside className={`sidebar ${menuOpen ? 'sidebar-open' : ''}`}>
+  return <div className={`app-shell ${initialView === 'practice' ? 'is-practising' : 'has-mobile-navigation'} ${settings.reducedMotion ? 'reduce-motion' : ''}`}>
+    <aside className="sidebar">
       <Link className="brand" href="/"><span className="brand-mark">書</span><span>Kaku<span className="brand-dot">.</span><small>{t("A LITTLE EVERY DAY")}</small></span></Link>
       <div className="sidebar-label">{t("YOUR LEARNING SPACE")}</div>
-      <nav>{navigation.map(({ view, label, href, icon: Icon }) => <Link key={view} href={href} className={`nav-item ${initialView === view || initialView === 'practice' && view === 'lessons' ? 'selected' : ''}`}><Icon size={19} strokeWidth={1.65} /><span>{t(label)}</span>{view === 'review' && dueCharacters.length > 0 && <span className="nav-badge">{n(dueCharacters.length)}</span>}{initialView === view && <span className="selected-dot" />}</Link>)}</nav>
+      <nav>{navigation.map(({ view, label, href, icon: Icon }) => <Link key={view} href={href} aria-current={initialView === view || initialView === 'practice' && view === 'lessons' ? 'page' : undefined} className={`nav-item ${initialView === view || initialView === 'practice' && view === 'lessons' ? 'selected' : ''}`}><Icon size={19} strokeWidth={1.65} /><span>{t(label)}</span>{view === 'review' && dueCharacters.length > 0 && <span className="nav-badge">{n(dueCharacters.length)}</span>}{initialView === view && <span className="selected-dot" />}</Link>)}</nav>
       <div className="sidebar-note"><span className="note-flower"><Flower2 size={27} strokeWidth={1.3} /></span><p>{t("Small strokes.")}<br /><strong>{t("Beautiful beginnings.")}</strong></p><span>{t("Make a little space for")}<br />{t("Japanese, every day.")}</span></div>
       <div className="sidebar-bottom"><Link href="/settings/" className={`nav-item ${initialView === 'settings' ? 'selected' : ''}`}><Settings2 size={18} strokeWidth={1.65} />{t("Settings")}</Link><button className="nav-item" onClick={() => setHelpOpen(true)}><CircleHelp size={18} strokeWidth={1.65} />{t("A little help")}<ArrowUpRight size={14} className="help-arrow" /></button><div className="local-profile"><span className="avatar">Y</span><span><strong>{t("Your little notebook")}</strong><small><i /> {t("Saved on this device")}</small></span><ShieldCheck size={17} /></div></div>
     </aside>
-    <div className="workspace"><header className="topbar"><div className="topbar-left"><button className="icon-button mobile-menu" aria-label={t("Open navigation")} onClick={() => setMenuOpen(true)}><Menu size={21} /></button><span className="breadcrumb-home">{t("My workspace")}</span><ChevronRight size={13} /><strong>{t(title)}</strong></div><div className="topbar-right"><LanguageSwitcher /><span className="topbar-date">{dateLabel}</span><span className="streak-pill"><Flame size={16} />{t(streak === 1 ? '{count} day' : '{count} days', { count: streak })}</span><button className="profile-button" onClick={() => router.push('/settings/')} aria-label={t("Open your settings")}>Y</button></div></header>
+    <div className="workspace"><header className="topbar"><div className="topbar-left"><Link className="mobile-brand" href="/" aria-label={t("Kaku home")}><span aria-hidden="true">&#x66F8;</span><strong>Kaku</strong></Link><span className="breadcrumb-home">{t("My workspace")}</span><ChevronRight size={13} /><strong>{t(title)}</strong></div><div className="topbar-right"><span className="topbar-date">{dateLabel}</span><span className="streak-pill"><Flame size={16} />{t(streak === 1 ? '{count} day' : '{count} days', { count: streak })}</span><button className="profile-button" onClick={() => router.push('/settings/')} aria-label={t("Open your settings")}>Y</button><MobileMenu onHelp={() => setHelpOpen(true)} /></div></header>
       {storageError && <div className="storage-warning" role="alert">{t("Your browser couldn’t save progress. This session still works; enable browser storage to keep your notebook.")}</div>}
       <main className={initialView === 'practice' ? 'main-content practice-content' : 'main-content'}>
         {initialView === 'overview' && <div className="page-enter">
@@ -177,6 +176,7 @@ function KakuAppContent({ initialView }: { initialView: View }) {
       </main>
       <footer className="workspace-footer"><span>{t("Made for a little progress, every day.")}</span><span><span className="footer-dot" /> {t("Your pace. Your practice.")}</span></footer>
     </div>
+    {initialView !== 'practice' && <nav className="mobile-bottom-nav" aria-label={t("Main navigation")}>{navigation.map(({ view, mobileLabel, href, icon: Icon }) => <Link key={view} href={href} aria-current={initialView === view ? 'page' : undefined} className={initialView === view ? 'active' : ''}><span className="mobile-tab-icon"><Icon size={21} strokeWidth={1.8} aria-hidden="true" />{view === 'review' && dueCharacters.length > 0 && <span className="mobile-review-dot" aria-hidden="true" />}</span><span>{t(mobileLabel)}</span></Link>)}</nav>}
     {notice && <div className="toast" role="status"><Check size={16} />{t(notice)}<button aria-label={t("Dismiss notification")} onClick={() => setNotice('')}><X size={15} /></button></div>}
     {detail && <Modal onClose={() => setDetail(null)} label={t("Character details")}><span className="eyebrow">{t(detail.script)} · {t(detail.group)}</span><div className="detail-symbol">{detail.symbol}</div><h2 className="detail-reading">{displayReading(detail.reading)}<button className="audio-button" aria-label={t("Play pronunciation")} disabled={!settings.sound} onClick={() => { setDetailAudioError(''); void speakCharacter(detail).then(message => { if (message) setDetailAudioError(message); }); }}><Volume2 size={20} /></button></h2>{detailAudioError && <p role="status">{t(detailAudioError)}</p>}<p>{t(detail.paths.length === 1 ? '{count} stroke' : '{count} strokes', { count: detail.paths.length })} · {practiced.has(detail.id) ? t("Practiced before") : t("A new little beginning")}</p><div className="detail-stroke-preview">{detail.paths.map((path, i) => <svg key={i} viewBox="0 0 109 109"><text x="5" y="15" fontSize="12" fill="#87917e">{n(i + 1)}</text>{detail.paths.slice(0, i + 1).map((p, j) => <path d={p} key={j} fill="none" stroke={j === i ? '#4a6540' : '#d4d9cb'} strokeWidth="4" strokeLinecap="round" />)}</svg>)}</div><button className="button-primary" onClick={() => { startCustom([detail], false); setDetail(null); }}>{t("Practice this character")} <ArrowRight size={17} /></button></Modal>}
     {helpOpen && <Modal onClose={() => setHelpOpen(false)} label={t("How to practice")}><span className="eyebrow">{t("WELCOME TO YOUR LITTLE NOTEBOOK")}</span><h2>{t("Three steps. A little more confidence.")}</h2><div className="help-steps"><p><strong>{t("01 · Follow the stroke")}</strong>{t("Draw the highlighted path, starting at the numbered dot. The animation shows the direction.")}</p><p><strong>{t("02 · Trace the character")}</strong>{t("Follow the faint outline with the same stroke order.")}</p><p><strong>{t("03 · Write from memory")}</strong>{t("Read the prompt and write without a guide. Hint is always there if you need it.")}</p></div><p>{t("Lift your pen or finger after each stroke. We check it automatically and move forward when you finish.")}</p><button className="button-primary" onClick={() => setHelpOpen(false)}>{t("Got it")} <Check size={16} /></button></Modal>}
