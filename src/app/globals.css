@@ -245,7 +245,10 @@ body{padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-i
   html:root .daily-card {
     display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px;text-align:left;
   }
-  html:root .goal-ring { grid-column:1;grid-row:1 / span 3;width:min(6.5rem,40vw);height:min(6.5rem,40vw);order:0;text-align:center; }
+  html:root .goal-ring { grid-column:1;grid-row:1 / span 3;width:min(7.5rem,40vw);height:min(7.5rem,40vw);order:0;text-align:center; }
+  html:root .goal-ring>div { inset:18%;align-items:center;gap:4px; }
+  html:root .goal-ring strong { flex-shrink:0;white-space:nowrap;letter-spacing:0; }
+  html:root .goal-ring div>span { width:100%;min-width:0;overflow-wrap:normal; }
   html:root .daily-heading { grid-column:2; }
   html:root .daily-heading h2 { margin:0; }
   html:root .daily-card>p { position:static;grid-column:2;margin:0; }
