@@ -143,3 +143,171 @@ body{padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-i
 @media(min-width:761px){.mobile-brand,.mobile-more-button,.mobile-bottom-nav{display:none}}
 
 @media(max-width:760px){.is-practising .topbar-right>.streak-pill{display:none}}
+
+/* Shared phone/tablet type scale. html:root keeps both language variants on
+   the same scale, overriding the older compact breakpoint sizes above. */
+@media (max-width:760px) {
+  :root {
+    --type-caption:.75rem;
+    --type-secondary:.875rem;
+    --type-body:1rem;
+    --type-card:1.125rem;
+    --type-section:1.25rem;
+    --type-page:1.625rem;
+    --type-hero:2rem;
+    --copy-leading:1.5;
+    --mobile-nav-space:calc(5.25rem + env(safe-area-inset-bottom));
+  }
+  html[lang=bn] { --copy-leading:1.75; }
+  body { font-size:var(--type-body);line-height:var(--copy-leading); }
+  .main-content { overflow-wrap:anywhere; }
+
+  html:root :is(.page-heading p,.welcome-copy>p,.writing-prompt p,
+    .setting-row p,.reset-row p,.settings-description,.empty-state p,
+    .session-finished>p,.modal p,.pwa-instructions) {
+    font-size:var(--type-body);line-height:var(--copy-leading);
+  }
+  html:root :is(.search-field input,.setting-row select) { font-size:var(--type-body); }
+  html:root :is(.button-primary,.button-secondary,.button-danger,.text-button,
+    .danger-link,.script-tabs>button,.pad-controls>button,.back-link,
+    .writing-feedback,.stroke-status,.practice-heading,.practice-stage-tabs>div,
+    .path-card>p,.daily-card>p,.section-heading>a,.section-heading>span,
+    .how-cards p,.lesson-row-info>span,.lesson-row-info>span>span[lang=bn],
+    .inline-note,.review-banner p,.review-selection-bar>span,.stat-card>p,
+    .history-list strong,.setting-row strong,.reset-row strong,.attribution strong,
+    .attribution p,.result-stats span,.reference-details,.example-word>span,
+    .gentle-note p,.toast,.storage-warning,.loading-screen,.pwa-update p,
+    .mobile-more-inner nav>a,.mobile-more-inner nav>button) {
+    font-size:var(--type-secondary);line-height:var(--copy-leading);
+  }
+  html:root :is(.eyebrow,.hero-tag,.hero-caption,.path-level,.path-bottom,
+    .goal-ring div>span,.goal-ring small,.step-number,.dashboard-footer,
+    .dashboard-footer>span:first-child,.workspace-footer,.lesson-completion,
+    .character-tile>small,.stat-card>small,.history-list small,.history-list time,
+    .history-label,.activity-day>span,.activity-day>strong,.pill,.example-word small,
+    .finished-characters small,.practice-stage-tabs>div>span,.language-switch button,
+    .mobile-bottom-nav>a,.streak-pill,.art-caption,.art-stamp,.lesson-number,.tiny-avatars i) {
+    font-size:var(--type-caption);line-height:var(--copy-leading);
+  }
+  html:root .character-tile>span { font-size:var(--type-secondary); }
+  html:root :is(.path-card h3,.lesson-row h3,.daily-heading h2,.review-banner h2,
+    .how-cards h3,.empty-state h3,.help-steps strong,.mobile-more-inner h2) {
+    font-size:var(--type-card);line-height:var(--copy-leading);
+  }
+  html:root :is(.section-heading h2,.settings-panel h2) {
+    font-size:var(--type-section);line-height:1.4;
+  }
+  html:root :is(.page-heading h1,.writing-prompt h1,.session-finished h1,.modal h2) {
+    font-size:var(--type-page);line-height:1.4;letter-spacing:-.5px;
+  }
+  html:root .welcome-copy h2 { font-size:var(--type-hero);line-height:1.25; }
+  html:root :is(.eyebrow,.hero-tag) { letter-spacing:.06em; }
+
+  /* Give larger text natural height instead of shrinking it to fit cards. */
+  html:root :is(.button-primary,.button-secondary,.button-danger) {
+    min-height:44px;white-space:normal;text-align:center;max-width:100%;
+  }
+  html:root :is(.page-heading,.section-heading,.path-bottom,.practice-heading,
+    .review-selection-bar>div,.workspace-footer) { flex-wrap:wrap; }
+  html:root .page-heading>div { min-width:0;flex:1; }
+  html:root .page-heading p { max-width:none; }
+  html:root .heading-seal { display:none; }
+  html:root .welcome-card { min-height:0;flex-direction:column; }
+  html:root .welcome-copy { width:100%;flex:none;min-width:0; }
+  html:root .welcome-copy>p { max-width:none; }
+  html:root .welcome-art {
+    display:flex;position:relative;inset:auto;align-self:center;
+    width:100%;max-width:420px;min-width:0;height:max(256px,16rem);
+    flex-shrink:0;opacity:1;padding-bottom:40px;
+  }
+  html:root .art-circle {
+    width:178px;height:178px;left:calc(50% - 89px);top:calc(50% - 109px);
+  }
+  html:root .art-orbit {
+    width:208px;height:208px;left:calc(50% - 104px);top:calc(50% - 124px);
+  }
+  html:root .art-character { font-size:166px;transform:rotate(-8deg); }
+  html:root .art-label {
+    display:block;right:16px;top:16px;font-size:var(--type-caption);
+    line-height:1;letter-spacing:.08em;
+  }
+  html:root .art-caption {
+    left:50%;bottom:16px;width:calc(100% - 48px);white-space:normal;text-align:center;
+  }
+  html:root .art-stamp { right:24px;bottom:56px;padding:4px 3px;line-height:1.2; }
+  html:root .hero-caption { flex-wrap:wrap; }
+  html:root .tiny-avatars { flex-shrink:0; }
+  html:root .path-level { max-width:100%;overflow-wrap:anywhere;letter-spacing:0; }
+  html:root .path-card>p { min-height:0; }
+  html:root .path-bottom { gap:4px 12px; }
+  html:root .path-card h3 { gap:4px;letter-spacing:0; }
+  html:root :is(.path-cards,.stats-grid) { grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr)); }
+  html:root .daily-card {
+    display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px;text-align:left;
+  }
+  html:root .goal-ring { grid-column:1;grid-row:1 / span 3;width:min(6.5rem,40vw);height:min(6.5rem,40vw);order:0;text-align:center; }
+  html:root .daily-heading { grid-column:2; }
+  html:root .daily-heading h2 { margin:0; }
+  html:root .daily-card>p { position:static;grid-column:2;margin:0; }
+  html:root .daily-card .text-button {
+    grid-column:2;max-width:none;text-align:left;justify-content:flex-start;margin:0;
+  }
+  html:root .how-cards {
+    display:flex;flex-direction:column;align-items:stretch;gap:24px;padding:24px 18px;
+  }
+  html:root .how-cards>div {
+    display:block;text-align:left;padding:0 16px 0 56px;min-height:48px;
+  }
+  html:root .how-cards .step-symbol { left:0;top:4px;transform:none; }
+  html:root .how-cards .step-number { right:0; }
+  html:root .how-cards h3 { min-height:0;margin:0 0 6px; }
+  html:root .how-cards .step-arrow { display:none; }
+  html:root .lesson-row { flex-wrap:wrap;gap:12px; }
+  html:root .lesson-row-info { width:auto;min-width:0;flex:1; }
+  html:root .lesson-number { width:2rem;height:2rem; }
+  html:root .lesson-preview { flex-basis:100%;order:1;padding:0;justify-content:center;flex-wrap:wrap; }
+  html:root .script-tabs { display:flex;max-width:100%; }
+  html:root .script-tabs>button { min-width:0;flex:1;flex-wrap:wrap;padding:10px; }
+  html:root .library-toolbar { flex-wrap:wrap;gap:0; }
+  html:root .library-toolbar>.search-field { flex:none;width:100%;max-width:none;margin-bottom:20px; }
+  html:root .search-field { min-height:44px; }
+  html:root .character-grid { grid-template-columns:repeat(auto-fit,minmax(4.5rem,1fr)); }
+  html:root .character-tile { padding:14px 4px; }
+  html:root .review-banner { align-items:flex-start; }
+  html:root .review-banner>.button-primary { margin-left:0; }
+  html:root .review-selection-bar { align-items:stretch;flex-direction:column; }
+  html:root .review-selection-bar>div { width:100%;gap:12px; }
+  html:root .stat-card>p { min-height:0; }
+  html:root .history-list>div { flex-wrap:wrap; }
+  html:root .history-list>div>div { min-width:6rem; }
+  html:root :is(.setting-row,.reset-row) { flex-wrap:wrap;gap:16px; }
+  html:root :is(.setting-row>div,.reset-row>div) { flex:1 1 12rem;min-width:0; }
+  html:root :is(.setting-row p,.reset-row p) { max-width:none; }
+  html:root .setting-row select { max-width:100%;min-width:0;min-height:44px; }
+  html:root .reset-row .danger-link { max-width:none;white-space:normal;text-align:left; }
+  html:root .practice-heading { align-items:flex-start;gap:12px; }
+  html:root .practice-stage-tabs { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px; }
+  html:root .practice-stage-tabs>div { flex-direction:column;text-align:center;white-space:normal; }
+  html:root .practice-stage-tabs>div>span { width:24px;height:24px;flex-shrink:0; }
+  html:root .writing-prompt h1 { flex-wrap:wrap; }
+  html:root .writing-feedback { min-height:44px;height:auto; }
+  html:root .pad-controls { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px; }
+  html:root .pad-controls>span { display:none; }
+  html:root .pad-controls>button { flex-direction:column;justify-content:center;min-height:44px;max-width:none; }
+  html:root .audio-button { width:44px;height:44px;flex-shrink:0; }
+  html:root .result-stats { flex-wrap:wrap;gap:16px 0; }
+  html:root .result-stats>div { flex:1 1 8rem; }
+  html:root .finished-characters>span { height:auto;min-height:80px; }
+  html:root .workspace-footer>span:first-child { max-width:none; }
+  html:root .language-switch button { min-height:36px; }
+  html:root .topbar { height:auto;min-height:65px;flex-wrap:wrap;gap:4px 8px;padding-top:8px;padding-bottom:8px; }
+  html:root .topbar-right { flex-wrap:wrap; }
+  html:root .mobile-bottom-nav>a { overflow-wrap:anywhere;min-height:4.375rem; }
+  html:root .modal-inner { padding:30px 20px;overflow-wrap:anywhere; }
+  html:root .detail-stroke-preview { flex-wrap:wrap; }
+  html:root .toast { width:calc(100% - 24px);overflow-wrap:anywhere; }
+}
+
+@media (max-width:360px) {
+  html:root :is(.path-cards,.stats-grid) { grid-template-columns:minmax(0,1fr); }
+}
