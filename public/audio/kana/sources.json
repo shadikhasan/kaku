@@ -1,0 +1,784 @@
+[
+  {
+    "reading": "a",
+    "file": "a-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Ja-A.oga",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/e/ed/Ja-A.oga/Ja-A.oga.mp3",
+    "bytes": 4077,
+    "sha256": "7d23905f4742e86daaa2297df7bda625dffc4ebc7c7af23f74cce7b915f07a0f",
+    "processing": {
+      "trimStartSeconds": 0.06000000000000001,
+      "trimEndSeconds": 0.33,
+      "gain": 1.4579422541393072,
+      "originalSha256": "1eda422b93d92182c1c75cbe25bde3c5219bf0994266ec20af40d9a118d712bb",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "i",
+    "file": "i-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_I.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ac/Japanese_I.ogg/Japanese_I.ogg.mp3",
+    "bytes": 3789,
+    "sha256": "8ce1bb5be6609696a165e5d100ad6a16464efe29b52973312d6bb20b1dadfe33",
+    "processing": {
+      "trimStartSeconds": 0,
+      "trimEndSeconds": 0.25,
+      "gain": 2.149063914625306,
+      "originalSha256": "aa4fffc21af54d0823969c5618986ca550221e0c2197e482392883fa23a1ea6b",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "u",
+    "file": "u-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_U.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/c/c9/Japanese_U.ogg/Japanese_U.ogg.mp3",
+    "bytes": 3789,
+    "sha256": "7dc5ccc20b2d99774be72b63b526732b354db9dbabd9981190b3c46250e2a2cd",
+    "processing": {
+      "trimStartSeconds": 0,
+      "trimEndSeconds": 0.25,
+      "gain": 2.243642068391618,
+      "originalSha256": "cb7d3c13ec9665a2bbc75fe1425b711ba3d35aa2ea90f5d09f7200a4c803f8a9",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "e",
+    "file": "e-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Ja-E.oga",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/8/86/Ja-E.oga/Ja-E.oga.mp3",
+    "bytes": 4077,
+    "sha256": "7a010a7538a2e79f1c0ae5c46378cf2a074cee0ec82522ceb9ad2ae71fb5966e",
+    "processing": {
+      "trimStartSeconds": 0,
+      "trimEndSeconds": 0.27,
+      "gain": 1.7959051165824038,
+      "originalSha256": "16c05eb69437811919830d2f948b4d7929bddb5c9832225a8425f75ac1982ab1",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "o",
+    "file": "o-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_O.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/3/3b/Japanese_O.ogg/Japanese_O.ogg.mp3",
+    "bytes": 3789,
+    "sha256": "38293694584a58b577abb4729c369e1547a7547996df66b360a71bb060d2dac6",
+    "processing": {
+      "trimStartSeconds": 0,
+      "trimEndSeconds": 0.25,
+      "gain": 1.8669404146053035,
+      "originalSha256": "18da569b93f086b3f41f3a63f391748c8645fa8b06167c4d187ed50a66012ec5",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ka",
+    "file": "ka-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Ja-Ka.oga",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/e/ec/Ja-Ka.oga/Ja-Ka.oga.mp3",
+    "bytes": 6381,
+    "sha256": "cd4d1ce6cbc063a92ea40458690f722ef363b0beafabed1b63ccced55b2cf0b2",
+    "processing": {
+      "trimStartSeconds": 0.74,
+      "trimEndSeconds": 1.2100000000000002,
+      "gain": 2.895843689701585,
+      "originalSha256": "b5acc9ce3cebfec3704d5d524bd20f425d862d8f6929e2815fbd2915b7c32cf3",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ki",
+    "file": "ki-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ki.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/6/65/Japanese_ki.ogg/Japanese_ki.ogg.mp3",
+    "bytes": 6093,
+    "sha256": "732a4eca82ae3a24fce39726372d4f3b0b5b5e12902b66ab8dd4d3ee4bf66d22",
+    "processing": {
+      "trimStartSeconds": 0.7200000000000001,
+      "trimEndSeconds": 1.1700000000000002,
+      "gain": 4.087520417631199,
+      "originalSha256": "d7437109c680a54af037a3ecc8f942c32a4c0a7ecc5d9c49ab115189a120949c",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ku",
+    "file": "ku-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ku.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/7/72/Japanese_ku.ogg/Japanese_ku.ogg.mp3",
+    "bytes": 5805,
+    "sha256": "f88e224cc5d2a537152ed88f4bca618b50040eb8e7902562cd1029004eafdb44",
+    "processing": {
+      "trimStartSeconds": 0.3,
+      "trimEndSeconds": 0.73,
+      "gain": 4.4160775214945724,
+      "originalSha256": "50cb286418d33c233b7938312c7b4876aba8126c296d1ec4a8f075afe4dcdd62",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ke",
+    "file": "ke-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ke.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/2/2f/Japanese_ke.ogg/Japanese_ke.ogg.mp3",
+    "bytes": 6381,
+    "sha256": "b4bf030d1c8b44362412529195d37d3556a72bb106ff59243bebbfa712c03421",
+    "processing": {
+      "trimStartSeconds": 0.53,
+      "trimEndSeconds": 1.01,
+      "gain": 2.744328426308055,
+      "originalSha256": "cb4a835bdc6d64e7571736f6481a80f0d7c964c02d6b5d4de4a1429243b5e93a",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ko",
+    "file": "ko-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ko.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/4/48/Japanese_ko.ogg/Japanese_ko.ogg.mp3",
+    "bytes": 7533,
+    "sha256": "573e024313bf7206bbe4142e37d58c0c01e3999a1f60e5d2d0dd95c39c4823fc",
+    "processing": {
+      "trimStartSeconds": 0.7300000000000001,
+      "trimEndSeconds": 1.3,
+      "gain": 3.3454393605839776,
+      "originalSha256": "87e0f7705ba457e5dadd02876d1342be4eed50dfa8dee7d0f556773d2f13e2a1",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "sa",
+    "file": "sa-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_sa.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/4/46/Japanese_sa.ogg/Japanese_sa.ogg.mp3",
+    "bytes": 6669,
+    "sha256": "9a6b2a950c0db925dbf933cfd2003e03dd9fbbadcd19a3250d9e14771fa97a5a",
+    "processing": {
+      "trimStartSeconds": 0.49999999999999994,
+      "trimEndSeconds": 0.99,
+      "gain": 3.247953958736267,
+      "originalSha256": "79d149b5e212deb9361c9b834b5b63acca01bec9a935ae3ddc3a34b95954ce71",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "shi",
+    "file": "shi-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_shi.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/8/89/Japanese_shi.ogg/Japanese_shi.ogg.mp3",
+    "bytes": 5805,
+    "sha256": "672af11739fefb09c8d027d05b77b55386ab2b2ec84d24ead2b6a0efb77b637d",
+    "processing": {
+      "trimStartSeconds": 0.20999999999999996,
+      "trimEndSeconds": 0.62,
+      "gain": 2.170773347514325,
+      "originalSha256": "830e3c1fda885699dda8c8d4eb7c491318f09742e7b52c68c8ca1f8ad5923452",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "su",
+    "file": "su-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_su.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/3/35/Japanese_su.ogg/Japanese_su.ogg.mp3",
+    "bytes": 5517,
+    "sha256": "453f1ddf0cff40755cbb26e30872062a546ccd91e4ba2298a6e69d47c1e62a03",
+    "processing": {
+      "trimStartSeconds": 0.51,
+      "trimEndSeconds": 0.9,
+      "gain": 3.1492014771345906,
+      "originalSha256": "2d357d375d168b2f84f97f8ee3376ed7dba19ec3379cbea658868220cb4d6b1f",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "se",
+    "file": "se-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_se.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/4/4d/Japanese_se.ogg/Japanese_se.ogg.mp3",
+    "bytes": 6381,
+    "sha256": "01754246fa857e1af21f337a4289f1d5d0bd6b2c65b821fe23e6fd6a93b5809b",
+    "processing": {
+      "trimStartSeconds": 0.38999999999999996,
+      "trimEndSeconds": 0.85,
+      "gain": 3.257463643076807,
+      "originalSha256": "0d3860df07770748f8a3f1475f19482c963b22e15b9977f573744cae8d63518a",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "so",
+    "file": "so-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Ja-So.oga",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/7/73/Ja-So.oga/Ja-So.oga.mp3",
+    "bytes": 6093,
+    "sha256": "3ed49c0b476c13a380fd88227d9a7db8e5a040ce9dbc67b0ce9fa05fa811ca90",
+    "processing": {
+      "trimStartSeconds": 0.27999999999999997,
+      "trimEndSeconds": 0.73,
+      "gain": 3.2697311060074346,
+      "originalSha256": "612b37e3ef7869d83c3ec4cee08d89f46a59f0ab4956967bc85cc95380911b75",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ta",
+    "file": "ta-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ta.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/4/41/Japanese_ta.ogg/Japanese_ta.ogg.mp3",
+    "bytes": 4941,
+    "sha256": "cef771e85d507a427f62b897c1e818ec20a0a2c68feb86d1b4e61ea1d7054715",
+    "processing": {
+      "trimStartSeconds": 0.54,
+      "trimEndSeconds": 0.89,
+      "gain": 3.0556043032513265,
+      "originalSha256": "52ce06aec0eec7e0493d280422902df82a221adcce87e7b30c063563e236f1ee",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "chi",
+    "file": "chi-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ti.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/e/ec/Japanese_ti.ogg/Japanese_ti.ogg.mp3",
+    "bytes": 5805,
+    "sha256": "5837459c4c957da552cac5445b250c8e5180886c843bc4b7895d7ea66ffe2695",
+    "processing": {
+      "trimStartSeconds": 0.35,
+      "trimEndSeconds": 0.78,
+      "gain": 3.6016804668372897,
+      "originalSha256": "35d30f9e60a98643a34836a9fa13e162811ebb44e540713d6d15c1492eaa6054",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "tsu",
+    "file": "tsu-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_tsu.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/5/59/Japanese_tsu.ogg/Japanese_tsu.ogg.mp3",
+    "bytes": 5805,
+    "sha256": "98fcc43ee77a4ff2a6a6908c89608b1ec3d57b07ea360b14f06d42fbf04cafde",
+    "processing": {
+      "trimStartSeconds": 0.18,
+      "trimEndSeconds": 0.6,
+      "gain": 4.946963883311804,
+      "originalSha256": "b6ac5f323290405764331fc23155c8421f619aac3aabb88ad4eddb3a58fc2518",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "te",
+    "file": "te-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_te.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b4/Japanese_te.ogg/Japanese_te.ogg.mp3",
+    "bytes": 5517,
+    "sha256": "2ea30e78bbdcd4d6db59803d9fd72f72c5ad8138d5cf1b6f1914442eaf85aad4",
+    "processing": {
+      "trimStartSeconds": 0.39999999999999997,
+      "trimEndSeconds": 0.7999999999999999,
+      "gain": 3.545886381401459,
+      "originalSha256": "c2b29cf37c5d1b861687dac1533222de0985a3d4d51c95575df96682abfaaf1d",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "to",
+    "file": "to-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_to.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/5/5b/Japanese_to.ogg/Japanese_to.ogg.mp3",
+    "bytes": 5229,
+    "sha256": "72a73e4dfd9072f5e24eef82353de97e72a516b6f52c45588a096f9e6758d0a6",
+    "processing": {
+      "trimStartSeconds": 0.32999999999999996,
+      "trimEndSeconds": 0.7,
+      "gain": 3.466543507878966,
+      "originalSha256": "7855596ce1b348f568e6f79becd05ecc61e1114fd93b0b3b5cfd88174eed727e",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "na",
+    "file": "na-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_na.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/1/11/Japanese_na.ogg/Japanese_na.ogg.mp3",
+    "bytes": 5805,
+    "sha256": "709d1e6c7b600a0800cccf47671c232f05cc3313274155301467992c84c9e984",
+    "processing": {
+      "trimStartSeconds": 0.29,
+      "trimEndSeconds": 0.72,
+      "gain": 0.594378386168015,
+      "originalSha256": "9b4e9043456bde7acb27ffbb6e011a39f7e73705472a18bbb0f3a708869d1ec0",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ni",
+    "file": "ni-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ni.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/d/db/Japanese_ni.ogg/Japanese_ni.ogg.mp3",
+    "bytes": 6381,
+    "sha256": "1dbd807464d22a40890cbc3e6de37d18ea425004583577933fd935e0cfc31052",
+    "processing": {
+      "trimStartSeconds": 0.32,
+      "trimEndSeconds": 0.78,
+      "gain": 0.7438769480155777,
+      "originalSha256": "ca926e479cab0fd00838cc4dbd943aec7f93f92fefa17bc1b7f6ad8237388b7d",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "nu",
+    "file": "nu-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_nu.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/6/6c/Japanese_nu.ogg/Japanese_nu.ogg.mp3",
+    "bytes": 6093,
+    "sha256": "b82241f560e3c43725f0dca74dd450d3f2c6761473943e0e3a2e8eabe629c72e",
+    "processing": {
+      "trimStartSeconds": 0.32,
+      "trimEndSeconds": 0.77,
+      "gain": 0.7263131880385695,
+      "originalSha256": "de55758ae220ce88108c88432ce6b36871ea6c843cf08b3a9ba07585688d7bd8",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ne",
+    "file": "ne-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ne.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/9/93/Japanese_ne.ogg/Japanese_ne.ogg.mp3",
+    "bytes": 6093,
+    "sha256": "963f504e3f98206f7b3d008933546bcb7db15ce202888696706abe2471ecc194",
+    "processing": {
+      "trimStartSeconds": 0.32999999999999996,
+      "trimEndSeconds": 0.77,
+      "gain": 0.6198051581730517,
+      "originalSha256": "7c8e809bf6b942e141942ff3ccbe7b8130bc0dc9915cb4b22ec404bc455adea4",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "no",
+    "file": "no-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_no.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/9/9b/Japanese_no.ogg/Japanese_no.ogg.mp3",
+    "bytes": 5805,
+    "sha256": "856631ba4474ad871dc5b25caa1847af9a2acdcd0b2fc3762cb51710dc7b6401",
+    "processing": {
+      "trimStartSeconds": 0.38999999999999996,
+      "trimEndSeconds": 0.8099999999999999,
+      "gain": 0.6499235998789868,
+      "originalSha256": "76c4913ea99ad1a0e932beb96880864fec4497ddf62f61ec412f9720bd21a9a1",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ha",
+    "file": "ha-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ha.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/5/55/Japanese_ha.ogg/Japanese_ha.ogg.mp3",
+    "bytes": 6093,
+    "sha256": "898886b7073b3c89a0806fc88170041cae418d5dac6c4d681533b02d68add88d",
+    "processing": {
+      "trimStartSeconds": 0.37,
+      "trimEndSeconds": 0.82,
+      "gain": 0.5145124540434147,
+      "originalSha256": "dfba356ec9f550fdb0852adc89c1b8859ff3e0f279fad09589fb90a456a708ca",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "hi",
+    "file": "hi-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_hi.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/2/22/Japanese_hi.ogg/Japanese_hi.ogg.mp3",
+    "bytes": 6669,
+    "sha256": "d921292fb907134d34da937fc278461dbd770921f2d548090ed45a4311d646d6",
+    "processing": {
+      "trimStartSeconds": 0.06000000000000001,
+      "trimEndSeconds": 0.55,
+      "gain": 0.7464479962455167,
+      "originalSha256": "1a3e856155b6547238a6a5854594e4845ab1413a37074e003410d1708778ede2",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "fu",
+    "file": "fu-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_hu.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/c/c3/Japanese_hu.ogg/Japanese_hu.ogg.mp3",
+    "bytes": 6669,
+    "sha256": "d8e51c9b12e4d3513e8cc965438395b051df732ef6d4553e5a304e5983f9343a",
+    "processing": {
+      "trimStartSeconds": 0.38999999999999996,
+      "trimEndSeconds": 0.88,
+      "gain": 0.7799566698084949,
+      "originalSha256": "eeb3dd4e0d5fb32fdd364a77b44d45d6838aaca3bdd0a22e341682efc348f2bf",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "he",
+    "file": "he-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_he.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/6/64/Japanese_he.ogg/Japanese_he.ogg.mp3",
+    "bytes": 6381,
+    "sha256": "73802b56fb37cac6e92325795100708502a1eed5aa8353138728e0e3f67a952b",
+    "processing": {
+      "trimStartSeconds": 0.19,
+      "trimEndSeconds": 0.6699999999999999,
+      "gain": 0.7225684197356171,
+      "originalSha256": "5ab02766f08f76d9d6cdb198e8cc4c61944e32dc00a9f9de385e2e913d6ae0d1",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ho",
+    "file": "ho-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ho.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/7/75/Japanese_ho.ogg/Japanese_ho.ogg.mp3",
+    "bytes": 5805,
+    "sha256": "1a67e69388f118029142f84e1a11bed537235a00611bd2ff61e569bb4bdcc683",
+    "processing": {
+      "trimStartSeconds": 0.19,
+      "trimEndSeconds": 0.61,
+      "gain": 0.6622018712283602,
+      "originalSha256": "7caadca8a0053bf9803f6601f6dd653961fc2101bc3bf02c38941addbef12a09",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ma",
+    "file": "ma-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ma.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/5/5c/Japanese_ma.ogg/Japanese_ma.ogg.mp3",
+    "bytes": 4941,
+    "sha256": "c5dcdc3e107576a87ac3196ced5734ae17b97e1536c595a9b431c85c5013af13",
+    "processing": {
+      "trimStartSeconds": 0.18,
+      "trimEndSeconds": 0.53,
+      "gain": 0.1773717897556454,
+      "originalSha256": "99b85b217650523e37c7c9b0770566befe5264f74d5940567eaeec7fcd48b5b8",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "mi",
+    "file": "mi-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_mi.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/5/58/Japanese_mi.ogg/Japanese_mi.ogg.mp3",
+    "bytes": 5517,
+    "sha256": "16f011b153c95088988847356ef68588e8092892a853933b72422c37d2af7042",
+    "processing": {
+      "trimStartSeconds": 0.14,
+      "trimEndSeconds": 0.53,
+      "gain": 0.22581959073943805,
+      "originalSha256": "b3dc85dc9812299625eb872b2813337865524fc7196c982b54b9ea0d3d5ba03c",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "mu",
+    "file": "mu-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_mu.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/e/e6/Japanese_mu.ogg/Japanese_mu.ogg.mp3",
+    "bytes": 5805,
+    "sha256": "0ca657465a3659714ab37a3feef0282b2f81fcefdcae2d581133c0fda7da9d2f",
+    "processing": {
+      "trimStartSeconds": 0.21999999999999997,
+      "trimEndSeconds": 0.65,
+      "gain": 0.2565887114665017,
+      "originalSha256": "7e50eeb952a56786559fbe3e4da15c5619113d50493e90e669565019d152d9eb",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "me",
+    "file": "me-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_me.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/3/36/Japanese_me.ogg/Japanese_me.ogg.mp3",
+    "bytes": 5805,
+    "sha256": "e580af7391acfff616535920947eb4542730d008a9b5b1408d17d4e1a589dd9a",
+    "processing": {
+      "trimStartSeconds": 0.27999999999999997,
+      "trimEndSeconds": 0.71,
+      "gain": 0.23039526059054882,
+      "originalSha256": "0b955d925df969e185ab1f28812486024cc9a0243f6248313079b1fea7906534",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "mo",
+    "file": "mo-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_mo.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/4/41/Japanese_mo.ogg/Japanese_mo.ogg.mp3",
+    "bytes": 5805,
+    "sha256": "d815e868d1be9a0338a38db08335151a056b5d7cd05f0146147fa072c61bef9a",
+    "processing": {
+      "trimStartSeconds": 0.12000000000000001,
+      "trimEndSeconds": 0.54,
+      "gain": 0.23668005354052893,
+      "originalSha256": "5e77ef54ae961f84a56688f054e1bcbcbecdd73f04897d983a84d26f18363d6b",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ya",
+    "file": "ya-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ya.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/f/f9/Japanese_ya.ogg/Japanese_ya.ogg.mp3",
+    "bytes": 4941,
+    "sha256": "dbba28005d111dcad540c23a0fd037956846c07dfad1ca5cdbe3673bb203f8e7",
+    "processing": {
+      "trimStartSeconds": 0.36,
+      "trimEndSeconds": 0.72,
+      "gain": 0.19575101609746948,
+      "originalSha256": "5ef6a139b0d729bb10f8dc80d9c44eb391bbfc3eaee505f7fc9e60a2d623e171",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "yu",
+    "file": "yu-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_yu.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/d/d0/Japanese_yu.ogg/Japanese_yu.ogg.mp3",
+    "bytes": 5517,
+    "sha256": "2d6abfaf7320f93f92efb1838f9bab8653c1e8faad77d60d9c16ab2081c6e69b",
+    "processing": {
+      "trimStartSeconds": 0.51,
+      "trimEndSeconds": 0.91,
+      "gain": 0.2484607639217494,
+      "originalSha256": "99d464afa385bc3fdc1a890fda19050952202d90176f69868ea02a87edee7551",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "yo",
+    "file": "yo-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_yo.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/9/9c/Japanese_yo.ogg/Japanese_yo.ogg.mp3",
+    "bytes": 4941,
+    "sha256": "3a797b153e3dbc6f6a246535f2f0b7f7c04ef863b41ff01afcc5a153ff0bf659",
+    "processing": {
+      "trimStartSeconds": 0.20999999999999996,
+      "trimEndSeconds": 0.56,
+      "gain": 0.21176054116088944,
+      "originalSha256": "2bda68ae92c811bacac760ef0797e37359d8126b0ea84d4194a210d8b349dbc6",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ra",
+    "file": "ra-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ra.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/3/34/Japanese_ra.ogg/Japanese_ra.ogg.mp3",
+    "bytes": 4653,
+    "sha256": "841aed57bcad2e97b56939086068ef8c2d556da02b9b53372d48f196a10debcd",
+    "processing": {
+      "trimStartSeconds": 0.32999999999999996,
+      "trimEndSeconds": 0.65,
+      "gain": 0.17567184922552637,
+      "originalSha256": "4676f70cffb2d6f959627cd06aa500740c8618df449443be88000d1fc7829c50",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ri",
+    "file": "ri-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ri.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/3/36/Japanese_ri.ogg/Japanese_ri.ogg.mp3",
+    "bytes": 5517,
+    "sha256": "27c2049056958d8db42010dcb5f5e82d5b1d04ae416ced028348be2c56262d79",
+    "processing": {
+      "trimStartSeconds": 0.19,
+      "trimEndSeconds": 0.59,
+      "gain": 0.2549931184832034,
+      "originalSha256": "776071a33d89c796f547ae66f554e5de5d3a8553aae8751eee9f76bb7b6fe6e5",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ru",
+    "file": "ru-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ru.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/3/33/Japanese_ru.ogg/Japanese_ru.ogg.mp3",
+    "bytes": 5517,
+    "sha256": "6fb59ea317af9c4326eb9bd17e4f69484829aaa8992d0f4649e21b8a934dd0d1",
+    "processing": {
+      "trimStartSeconds": 0.37,
+      "trimEndSeconds": 0.76,
+      "gain": 0.2552546208789844,
+      "originalSha256": "7210b6b9150ea4e1cf46b24bec3010e5b506334d93f735c88a8b0f4a3595e0bb",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "re",
+    "file": "re-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_re.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/e/e3/Japanese_re.ogg/Japanese_re.ogg.mp3",
+    "bytes": 4941,
+    "sha256": "4dcd6409987e74d94cf456210116fac54a052c84402391bddc09a13308cee29e",
+    "processing": {
+      "trimStartSeconds": 0.15999999999999998,
+      "trimEndSeconds": 0.51,
+      "gain": 0.2038991895770806,
+      "originalSha256": "b1891ce9839cfebcb41c0ee1c02ff9d40c2ee3b373eff7a117486615490c6e80",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "ro",
+    "file": "ro-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_ro.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/bd/Japanese_ro.ogg/Japanese_ro.ogg.mp3",
+    "bytes": 4941,
+    "sha256": "e1ea7511138670654ce1f275d41ba1190f54b95e9ac9abb710fba0d7b1850446",
+    "processing": {
+      "trimStartSeconds": 0.29,
+      "trimEndSeconds": 0.64,
+      "gain": 0.20841532646302227,
+      "originalSha256": "c62729b83f33d1fa2e310cac3b8bd6a69a3f438b35bba3e5b88ff34f62bd9eac",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "wa",
+    "file": "wa-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_wa.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/3/3c/Japanese_wa.ogg/Japanese_wa.ogg.mp3",
+    "bytes": 5517,
+    "sha256": "71c39a35ef0b93aa985c3a5a50f30024e7643c7bac3355ac24b8c28c9fdd6eb0",
+    "processing": {
+      "trimStartSeconds": 0.52,
+      "trimEndSeconds": 0.9199999999999999,
+      "gain": 0.22250114046026034,
+      "originalSha256": "bc9ce96d108e2cd6ad51ae59f4e3f51f86d48edea2188cca34babf884cafaab3",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "wo",
+    "file": "wo-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_wo.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/4/41/Japanese_wo.ogg/Japanese_wo.ogg.mp3",
+    "bytes": 4941,
+    "sha256": "820a9908dbb3dedf51ded5cefaa39f401b0f16c11885d51e3a7eec17bac6c6ea",
+    "processing": {
+      "trimStartSeconds": 0.22999999999999998,
+      "trimEndSeconds": 0.57,
+      "gain": 0.255078167218553,
+      "originalSha256": "cab51b220ceb8c7692f0015e2a3b7f16f37e65f63772f1f44a186d07aa11f4f9",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  },
+  {
+    "reading": "n",
+    "file": "n-single.mp3",
+    "author": "Hakatanoshio117117",
+    "license": "Public domain (PD-self)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_N.ogg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/transcoded/f/fd/Japanese_N.ogg/Japanese_N.ogg.mp3",
+    "bytes": 4365,
+    "sha256": "bda360f33ff15ddf79ae137a9ce242486bc1d443d2541079c7d86bcdc8ea7865",
+    "processing": {
+      "trimStartSeconds": 0.46,
+      "trimEndSeconds": 0.75,
+      "gain": 0.2316272761231552,
+      "originalSha256": "116be110337bc348839042ff9ac035a39e2a6ca3b78a9a7436657beb3af32dda",
+      "description": "First pronunciation only; 80 ms leading and 100 ms trailing padding where available; voice RMS target -20 dBFS with peak capped at -1.4 dBFS; 5 ms edge fades; mono 24 kHz MP3 at 96 kbps."
+    }
+  }
+]
