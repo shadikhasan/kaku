@@ -1,7 +1,8 @@
-import type { Character } from './types';
-import { banglaReadings } from './readings';
+import type { Character } from "./types";
+import { banglaReadings } from "./readings";
 
-export const audioUnavailable = 'Could not play audio. Check your connection and media volume, then try again.';
+export const audioUnavailable =
+  "Could not play audio. Check your connection and media volume, then try again.";
 
 let active: { finish: (message: string | null) => void } | null = null;
 
@@ -9,13 +10,19 @@ export function stopPronunciation() {
   active?.finish(null);
 }
 
-export function speakCharacter(character: Pick<Character, 'reading'>): Promise<string | null> {
+export function speakCharacter(
+  character: Pick<Character, "reading">,
+): Promise<string | null> {
   stopPronunciation();
-  if (typeof window === 'undefined' || !window.Audio || !Object.hasOwn(banglaReadings, character.reading)) {
+  if (
+    typeof window === "undefined" ||
+    !window.Audio ||
+    !Object.hasOwn(banglaReadings, character.reading)
+  ) {
     return Promise.resolve(audioUnavailable);
   }
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     let audio: HTMLAudioElement | undefined;
     let timer: ReturnType<typeof setTimeout> | undefined;
     let settled = false;
@@ -29,14 +36,14 @@ export function speakCharacter(character: Pick<Character, 'reading'>): Promise<s
       if (audio) {
         audio.onended = audio.onerror = audio.onplaying = null;
         audio.pause();
-        audio.removeAttribute('src');
+        audio.removeAttribute("src");
       }
       resolve(message);
     }
 
     try {
       audio = new window.Audio();
-      audio.preload = 'none';
+      audio.preload = "none";
       audio.volume = 1;
       audio.onended = () => finish(null);
       audio.onerror = () => finish(audioUnavailable);

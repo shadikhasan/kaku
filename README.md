@@ -44,15 +44,15 @@ Open [http://127.0.0.1:3020](http://127.0.0.1:3020). The preview server binds to
 
 ### Commands
 
-| Command | Purpose |
-| --- | --- |
-| `npm ci` | Install the dependencies pinned in the lockfile. |
-| `npm run dev` | Start the development server on port 3000. |
-| `npm run build` | Build the static site into `out/`. |
-| `npm start` | Serve an existing production build on port 3020. |
-| `npm run typecheck` | Check TypeScript without emitting files. |
-| `npm test` | Run the Vitest unit tests. |
-| `npm run test:e2e` | Run Playwright browser tests against port 3020. |
+| Command             | Purpose                                          |
+| ------------------- | ------------------------------------------------ |
+| `npm ci`            | Install the dependencies pinned in the lockfile. |
+| `npm run dev`       | Start the development server on port 3000.       |
+| `npm run build`     | Build the static site into `out/`.               |
+| `npm start`         | Serve an existing production build on port 3020. |
+| `npm run typecheck` | Check TypeScript without emitting files.         |
+| `npm test`          | Run the Vitest unit tests.                       |
+| `npm run test:e2e`  | Run Playwright browser tests against port 3020.  |
 
 ## How practice works
 
@@ -116,18 +116,18 @@ Coverage includes desktop and mobile layouts, pointer-drawn practice, wrong-stro
 
 ### Project structure
 
-| Path | Contents |
-| --- | --- |
-| [`src/app/`](src/app/) | Routes, root layout, and global styles. |
-| [`src/components/kaku-app.tsx`](src/components/kaku-app.tsx) | Dashboard, lessons, library, review, progress, and settings. |
-| [`src/components/practice.tsx`](src/components/practice.tsx) | Three-stage practice sessions. |
-| [`src/components/writing-pad.tsx`](src/components/writing-pad.tsx) | Pointer input and stroke rendering. |
-| [`src/components/language-provider.tsx`](src/components/language-provider.tsx) | Interface language state and persistence. |
-| [`src/lib/`](src/lib/) | Stroke validation, storage, translations, readings, content, and audio playback. |
-| [`src/data/kana.json`](src/data/kana.json) | Character metadata and ordered reference strokes. |
-| [`public/audio/`](public/audio/) | Pronunciation MP3s, credits, and per-file provenance. |
-| [`scripts/`](scripts/) | Static preview server and stroke/audio refresh scripts. |
-| [`tests/`](tests/) | Unit tests and Playwright browser tests. |
+| Path                                                                           | Contents                                                                         |
+| ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| [`src/app/`](src/app/)                                                         | Routes, root layout, and global styles.                                          |
+| [`src/components/kaku-app.tsx`](src/components/kaku-app.tsx)                   | Dashboard, lessons, library, review, progress, and settings.                     |
+| [`src/components/practice.tsx`](src/components/practice.tsx)                   | Three-stage practice sessions.                                                   |
+| [`src/components/writing-pad.tsx`](src/components/writing-pad.tsx)             | Pointer input and stroke rendering.                                              |
+| [`src/components/language-provider.tsx`](src/components/language-provider.tsx) | Interface language state and persistence.                                        |
+| [`src/lib/`](src/lib/)                                                         | Stroke validation, storage, translations, readings, content, and audio playback. |
+| [`src/data/kana.json`](src/data/kana.json)                                     | Character metadata and ordered reference strokes.                                |
+| [`public/audio/`](public/audio/)                                               | Pronunciation MP3s, credits, and per-file provenance.                            |
+| [`scripts/`](scripts/)                                                         | Static preview server and stroke/audio refresh scripts.                          |
+| [`tests/`](tests/)                                                             | Unit tests and Playwright browser tests.                                         |
 
 ### Deployment
 
@@ -155,10 +155,10 @@ The current curriculum covers basic kana. Voiced kana, combinations, kanji, and 
 
 Original application code and project documentation are licensed under the **[MIT License](LICENSE)**. Third-party assets retain their own terms:
 
-| Material | Source and terms |
-| --- | --- |
-| Kana reference strokes and derived guides | [KanjiVG](https://kanjivg.tagaini.net/), © Ulrich Apel and contributors; [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). See the [included license](public/KANJIVG-LICENSE.txt). |
-| Pronunciation recordings | Hakatanoshio117117 on Wikimedia Commons; public domain (PD-self), trimmed and volume-adjusted for Kaku. See the [audio documentation](public/audio/README.md) and [per-file sources](public/audio/kana/sources.json). |
+| Material                                  | Source and terms                                                                                                                                                                                                      |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Kana reference strokes and derived guides | [KanjiVG](https://kanjivg.tagaini.net/), © Ulrich Apel and contributors; [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). See the [included license](public/KANJIVG-LICENSE.txt).                     |
+| Pronunciation recordings                  | Hakatanoshio117117 on Wikimedia Commons; public domain (PD-self), trimmed and volume-adjusted for Kaku. See the [audio documentation](public/audio/README.md) and [per-file sources](public/audio/kana/sources.json). |
 
 The MIT license does not replace the terms for these third-party assets. Retain their attribution and source records when redistributing them.
 

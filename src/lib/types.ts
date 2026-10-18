@@ -1,5 +1,12 @@
-export type Script = 'hiragana' | 'katakana';
-export type View = 'overview' | 'lessons' | 'library' | 'review' | 'progress' | 'settings' | 'practice';
+export type Script = "hiragana" | "katakana";
+export type View =
+  | "overview"
+  | "lessons"
+  | "library"
+  | "review"
+  | "progress"
+  | "settings"
+  | "practice";
 export type Point = { x: number; y: number };
 export type Character = {
   id: string;
@@ -19,5 +26,16 @@ export type Attempt = {
   retries: number;
   hints: number;
 };
-export type Settings = { dailyGoal: number; sound: boolean; grid: boolean; reducedMotion: boolean };
-export type Lesson = { id: string; name: string; script: Script; characters: Character[]; number: number };
+export type Settings = {
+  dailyGoal: number;
+  sound: boolean;
+  grid: boolean;
+  reducedMotion: boolean;
+};
+export type Lesson = {
+  id: string;
+  name: string;
+  script: Script;
+  characters: Character[];
+  number: number;
+};
