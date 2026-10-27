@@ -232,6 +232,7 @@ export const bangla: Record<string, string> = {
   Today: "আজ",
   "Your latest pages": "সাম্প্রতিক অনুশীলন",
   "Keep practicing": "আরও অনুশীলন করো",
+  "Practice {reading} again": "“{reading}” আবার অনুশীলন করো",
   "Your story starts with a stroke.": "একটি স্ট্রোকেই হোক শুরু।",
   "Complete a lesson and watch your notebook fill up.":
     "একটি পাঠ শেষ করো, তোমার খাতা ভরে উঠবে।",

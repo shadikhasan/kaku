@@ -1110,13 +1110,23 @@ function KakuAppContent({ initialView }: { initialView: View }) {
                               </strong>
                               <small>{t(character.script)}</small>
                             </div>
-                            <span
-                              className={`history-label ${attempt.independent ? "independent" : ""}`}
-                            >
-                              {attempt.independent
-                                ? t("Recalled independently")
-                                : t("Keep practicing")}
-                            </span>
+                            {attempt.independent ? (
+                              <span className="history-label independent">
+                                {t("Recalled independently")}
+                              </span>
+                            ) : (
+                              <button
+                                type="button"
+                                className="history-label history-action"
+                                aria-label={t("Practice {reading} again", {
+                                  reading: displayReading(character.reading),
+                                })}
+                                onClick={() => startCustom([character])}
+                              >
+                                {t("Keep practicing")}
+                                <span aria-hidden="true"> →</span>
+                              </button>
+                            )}
                             <time>
                               {new Date(attempt.completedAt).toLocaleDateString(
                                 locale,
