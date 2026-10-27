@@ -23,6 +23,7 @@ import WritingPad from "./writing-pad";
 import { stageNames, stageDescriptions, examples } from "@/lib/content";
 import { dayKey, evaluateStroke, samplePath } from "@/lib/handwriting";
 import type { Attempt, Character, Lesson, Point, Settings } from "@/lib/types";
+import { repetitionStages, type RepetitionOptions } from "@/lib/repetition";
 
 export default function Practice({
   lesson,
@@ -30,16 +31,25 @@ export default function Practice({
   onAttempt,
   onExit,
   onRepeat,
+  repetition,
 }: {
   lesson: Lesson;
   settings: Settings;
   onAttempt: (attempt: Attempt) => Promise<void>;
   onExit: () => void;
   onRepeat: (characters: Character[]) => void;
+  repetition?: RepetitionOptions;
 }) {
   const { t, n } = useI18n();
   const [characterIndex, setCharacterIndex] = useState(0);
-  const [stage, setStage] = useState(0);
+  const [normalStage, setStage] = useState(0);
+  const [roundIndex, setRoundIndex] = useState(0);
+  const [endedEarly, setEndedEarly] = useState(false);
+  const stages = repetition ? repetitionStages(repetition) : [];
+  const stage = repetition ? (stages[roundIndex] ?? 2) : normalStage;
+  const [sessionId] = useState(
+    () => `repeat-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+  );
   const [strokes, setStrokes] = useState<Point[][]>([]);
   const [hint, setHint] = useState(false);
   const [replay, setReplay] = useState(0);
@@ -55,10 +65,18 @@ export default function Practice({
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hintTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isMounted = useRef(true);
+  const stopped = useRef(false);
+  const saving = useRef<Promise<void>>(Promise.resolve());
+  const completing = useRef(false);
   const character = lesson.characters[characterIndex];
-  const finished = characterIndex >= lesson.characters.length;
+  const finished = repetition
+    ? endedEarly || roundIndex >= stages.length
+    : characterIndex >= lesson.characters.length;
 
-  useEffect(() => stopPronunciation, [characterIndex, stage]);
+  useEffect(
+    () => stopPronunciation,
+    [characterIndex, stage, roundIndex, finished],
+  );
 
   useEffect(() => {
     isMounted.current = true;
@@ -80,6 +98,31 @@ export default function Practice({
   };
 
   const advance = async () => {
+    if (repetition) {
+      await saving.current;
+      if (!isMounted.current || stopped.current) return;
+      if (hintTimer.current) clearTimeout(hintTimer.current);
+      const nextStage = stages[roundIndex + 1];
+      setRoundIndex((value) => value + 1);
+      setStrokes([]);
+      setStageComplete(false);
+      setHint(false);
+      setRetries(0);
+      setHints(0);
+      setMemoryHelp(false);
+      completing.current = false;
+      setFeedback({
+        kind: "neutral",
+        message:
+          nextStage !== stage
+            ? nextStage === 1
+              ? "Now trace the whole character. Let your hand remember."
+              : "No outline this time. Trust what you’ve learned."
+            : "One more time. Let your hand remember.",
+      });
+      return;
+    }
+    completing.current = false;
     if (stage < 2) {
       setStage((s) => s + 1);
       setStrokes([]);
@@ -120,7 +163,13 @@ export default function Practice({
   };
 
   const acceptStroke = (points: Point[]) => {
-    if (stageComplete || !character.paths[strokes.length]) return;
+    if (
+      stageComplete ||
+      completing.current ||
+      stopped.current ||
+      !character.paths[strokes.length]
+    )
+      return;
     const result = evaluateStroke(
       points,
       samplePath(character.paths[strokes.length]),
@@ -135,11 +184,27 @@ export default function Practice({
     const next = [...strokes, points];
     setStrokes(next);
     if (next.length === character.paths.length) {
+      completing.current = true;
       setStageComplete(true);
+      if (repetition) {
+        const attempt: Attempt = {
+          characterId: character.id,
+          completedAt: new Date().toISOString(),
+          day: dayKey(),
+          independent: stage === 2 && !memoryHelp,
+          retries,
+          hints,
+          practiceStage: stage as 0 | 1 | 2,
+          sessionId,
+        };
+        setResults((previous) => [...previous, attempt]);
+        saving.current = onAttempt(attempt);
+      }
       setFeedback({
         kind: "success",
-        message:
-          stage === 2
+        message: repetition
+          ? "Character complete. A little more confidence."
+          : stage === 2
             ? "Beautifully written! Three steps, one character learned."
             : "Nicely done. Ready for a little less guidance?",
       });
@@ -160,6 +225,81 @@ export default function Practice({
     if (hintTimer.current) clearTimeout(hintTimer.current);
     hintTimer.current = setTimeout(() => setHint(false), 4000);
   };
+
+  const finishEarly = () => {
+    stopped.current = true;
+    if (timer.current) clearTimeout(timer.current);
+    if (hintTimer.current) clearTimeout(hintTimer.current);
+    setEndedEarly(true);
+  };
+
+  if (finished && repetition) {
+    const recalls = results.filter((r) => r.practiceStage === 2);
+    const independentCount = recalls.filter((r) => r.independent).length;
+    return (
+      <div className="session-finished page-enter">
+        <div className="celebration-icon">
+          <Trophy size={35} strokeWidth={1.4} />
+        </div>
+        <span className="eyebrow">
+          {t("ONE SMALL SESSION. REAL PROGRESS.")}
+        </span>
+        <h1>
+          {t(
+            results.length
+              ? "Look what you wrote."
+              : "A fresh start, whenever you’re ready.",
+          )}
+        </h1>
+        <div className="finished-characters">
+          <span>
+            {lesson.characters[0].symbol}
+            <small>{displayReading(lesson.characters[0].reading)}</small>
+          </span>
+        </div>
+        <p>
+          {t("{count} of {total} writings completed", {
+            count: results.length,
+            total: repetition.count,
+          })}
+        </p>
+        <div className="result-stats">
+          <div>
+            <strong>{n(results.length)}</strong>
+            <span>{t("complete writings")}</span>
+          </div>
+          <div>
+            <strong>{n(results.length - recalls.length)}</strong>
+            <span>{t("with guides")}</span>
+          </div>
+          <div>
+            <strong>
+              {recalls.length
+                ? `${n(independentCount)} / ${n(recalls.length)}`
+                : "—"}
+            </strong>
+            <span>
+              {t(
+                recalls.length
+                  ? "recalled independently"
+                  : "No memory rounds yet",
+              )}
+            </span>
+          </div>
+        </div>
+        <p>
+          {t(
+            "Completed writing is saved. Guided writing does not count as independent recall.",
+          )}
+        </p>
+        <div className="finished-actions">
+          <button className="button-primary" onClick={onExit}>
+            {t("Back to character library")} <ArrowRight size={17} />
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (finished) {
     const needsReview = results
@@ -225,20 +365,30 @@ export default function Practice({
   }
 
   const example = examples[character.reading];
-  const progress =
-    ((characterIndex * 3 + stage) / (lesson.characters.length * 3)) * 100;
+  const progress = repetition
+    ? (results.length / stages.length) * 100
+    : ((characterIndex * 3 + stage) / (lesson.characters.length * 3)) * 100;
   return (
     <div className="practice-page page-enter">
       <div className="practice-heading">
-        <button className="back-link" onClick={onExit}>
-          <ArrowLeft size={17} /> {t("Back to lessons")}
+        <button
+          className="back-link"
+          onClick={repetition ? finishEarly : onExit}
+        >
+          <ArrowLeft size={17} />{" "}
+          {t(repetition ? "Finish session" : "Back to lessons")}
         </button>
         <span>
           {t(lesson.name)} <span className="muted">/</span>{" "}
-          {t("Character {current} of {total}", {
-            current: characterIndex + 1,
-            total: lesson.characters.length,
-          })}
+          {repetition
+            ? t("{count} of {total} writings completed", {
+                count: results.length,
+                total: repetition.count,
+              })
+            : t("Character {current} of {total}", {
+                current: characterIndex + 1,
+                total: lesson.characters.length,
+              })}
         </span>
       </div>
       <div className="lesson-progress-track">
@@ -247,17 +397,20 @@ export default function Practice({
       <div className="practice-layout">
         <section className="practice-main">
           <div className="practice-stage-tabs">
-            {stageNames.map((name, index) => (
-              <div
-                key={name}
-                className={`${stage === index ? "active" : ""} ${stage > index ? "done" : ""}`}
-              >
-                <span>
-                  {stage > index ? <Check size={12} /> : n(index + 1)}
-                </span>
-                {t(name)}
-              </div>
-            ))}
+            {stageNames.map(
+              (name, index) =>
+                (!repetition || stages.includes(index as 0 | 1 | 2)) && (
+                  <div
+                    key={name}
+                    className={`${stage === index ? "active" : ""} ${stage > index ? "done" : ""}`}
+                  >
+                    <span>
+                      {stage > index ? <Check size={12} /> : n(index + 1)}
+                    </span>
+                    {t(name)}
+                  </div>
+                ),
+            )}
           </div>
           <div className="writing-prompt">
             <span className="eyebrow">
@@ -291,7 +444,7 @@ export default function Practice({
           </div>
           <div className="pad-container">
             <WritingPad
-              key={`${character.id}-${stage}`}
+              key={`${character.id}-${stage}-${roundIndex}`}
               paths={character.paths}
               strokes={strokes}
               stage={stage}

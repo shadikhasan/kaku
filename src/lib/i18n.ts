@@ -2,6 +2,44 @@ export type Language = "en" | "bn";
 export type TranslationValues = Record<string, string | number>;
 
 export const bangla: Record<string, string> = {
+  "Practice setup": "লেখার অনুশীলন বেছে নাও",
+  "How would you like to practise?": "কীভাবে অনুশীলন করবে?",
+  "Practice mode": "অনুশীলনের ধরন",
+  "Learn to write": "শিখে লিখি",
+  "Repeat writing": "বারবার লিখি",
+  "Stroke guide → Outline → From memory": "স্ট্রোক → আউটলাইন → মনে করে লেখা",
+  "Build confidence with one character.":
+    "একই অক্ষর বারবার লিখে আরও ভালোভাবে শেখো।",
+  "How many times?": "কতবার লিখবে?",
+  "{count} times": "{count} বার",
+  "How will you start?": "শুরু করবে কীভাবে?",
+  "Learn with guides": "দেখে শিখি",
+  "Write from memory": "মনে করে লিখি",
+  "{count} times from memory. Hints are always available.":
+    "{count} বার মনে করে লিখবে। চাইলে হিন্ট নিতে পারবে।",
+  "{guide} guided → {outline} outline → {memory} from memory":
+    "{guide} বার স্ট্রোক → {outline} বার আউটলাইন → {memory} বার মনে করে",
+  "You can finish early. Completed writing stays saved.":
+    "চাইলে আগেই শেষ করতে পারো। সম্পূর্ণ হওয়া লেখাগুলো সেভ থাকবে।",
+  "Three rounds, one character: follow, trace, then recall.":
+    "একটি অক্ষর, তিন ধাপ: স্ট্রোক দেখে, আউটলাইনে, শেষে মনে করে লেখো।",
+  "Start writing": "লেখা শুরু করো",
+  "One more time. Let your hand remember.":
+    "আরেকবার লেখো। ধীরে ধীরে আয়ত্তে আসবে।",
+  "Character complete. A little more confidence.":
+    "অক্ষর লেখা সম্পূর্ণ। আরেকটু এগিয়ে গেলে!",
+  "A fresh start, whenever you’re ready.": "প্রস্তুত হলে আবার শুরু করো।",
+  "{count} of {total} writings completed":
+    "{total} বারের মধ্যে {count} বার লেখা সম্পূর্ণ",
+  "complete writings": "বার লিখেছ",
+  "with guides": "বার দেখে লিখেছ",
+  "Completed writing is saved. Guided writing does not count as independent recall.":
+    "সম্পূর্ণ লেখাগুলো সেভ হয়েছে। দেখে লেখাকে সাহায্য ছাড়া মনে করে লেখা হিসেবে ধরা হয় না।",
+  "Back to character library": "অক্ষরের সংগ্রহে ফিরে যাও",
+  "Finish session": "অনুশীলন শেষ করো",
+  "completed writing attempts": "সম্পূর্ণ লেখার সংখ্যা",
+  "Writing attempts": "লেখার অনুশীলন",
+  "No memory rounds yet": "এখনও মনে করে লেখা হয়নি",
   "Kana Challenge": "কানা কুইজ",
   "A LITTLE CHALLENGE, EVERY DAY": "প্রতিদিন ছোট্ট একটি চ্যালেঞ্জ",
   "A few familiar characters. A fresh little challenge.":

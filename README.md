@@ -10,6 +10,7 @@ Kaku (書く) means “to write” in Japanese. No account, API key, or applicat
 
 - **92 basic kana across 20 lessons:** 46 hiragana and 46 katakana.
 - **Three practice rounds:** follow an animated stroke guide, trace the character, then write from memory.
+- **Repeated writing:** open a character in the Library and choose Practice → Repeat writing for 5, 10, or 20 complete writings. Start with guides that gradually fade, or write from memory throughout. Completed writings save immediately, including when you finish early. Guided repetitions do not count as independent recall, and successful recalls from one repetition session count as one scheduled review.
 - **Stroke feedback:** approximate checks for stroke position, shape, direction, and length, with undo, clear, hints, and replay.
 - **English and Bangla interface:** choose your interface language in Settings; your preference is saved on this device.
 - **Readings and pronunciation:** Bengali pronunciation aids alongside romaji, with 46 recorded pronunciations shared between both scripts. One tap plays one pronunciation; no Japanese voice installation is needed.

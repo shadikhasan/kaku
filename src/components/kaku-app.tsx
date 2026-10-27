@@ -31,7 +31,7 @@ import {
   Volume2,
   X,
 } from "lucide-react";
-import { characters, lessons } from "@/lib/content";
+import { characters, lessons, stageNames } from "@/lib/content";
 import { dayKey, streakForDays } from "@/lib/handwriting";
 import { db, defaultSettings, readProgress } from "@/lib/storage";
 import type {
@@ -43,6 +43,8 @@ import type {
   View,
 } from "@/lib/types";
 import Practice from "./practice";
+import PracticeSetup from "./practice-setup";
+import { independentReviewCount, parseRepetition } from "@/lib/repetition";
 import Quiz from "./quiz";
 import { PwaSettings } from "./pwa-settings";
 import { MobileMenu } from "./mobile-menu";
@@ -120,6 +122,7 @@ function KakuAppContent({ initialView }: { initialView: View }) {
   const [notice, setNotice] = useState("");
   const [selection, setSelection] = useState<string[]>([]);
   const [detail, setDetail] = useState<Character | null>(null);
+  const [detailSetup, setDetailSetup] = useState(false);
   const [detailAudioError, setDetailAudioError] = useState("");
   const [resetConfirm, setResetConfirm] = useState(false);
   const [date, setDate] = useState<Date | null>(null);
@@ -148,6 +151,7 @@ function KakuAppContent({ initialView }: { initialView: View }) {
   useEffect(() => stopPronunciation, []);
   useEffect(() => {
     setDetailAudioError("");
+    setDetailSetup(false);
     return stopPronunciation;
   }, [detail]);
   useEffect(() => {
@@ -177,6 +181,15 @@ function KakuAppContent({ initialView }: { initialView: View }) {
   const latestAttempts = new Map<string, Attempt>();
   attempts.forEach((a) => {
     const current = latestAttempts.get(a.characterId);
+    // A guided repetition does not replace an existing recall assessment.
+    const guided = a.practiceStage === 0 || a.practiceStage === 1;
+    const currentGuided =
+      current?.practiceStage === 0 || current?.practiceStage === 1;
+    if (guided && current && !currentGuided) return;
+    if (!guided && currentGuided) {
+      latestAttempts.set(a.characterId, a);
+      return;
+    }
     if (!current || a.completedAt >= current.completedAt)
       latestAttempts.set(a.characterId, a);
   });
@@ -188,9 +201,7 @@ function KakuAppContent({ initialView }: { initialView: View }) {
       ((date?.getTime() ?? Date.now()) -
         new Date(attempt.completedAt).getTime()) /
       86400000;
-    const successes = attempts.filter(
-      (a) => a.characterId === c.id && a.independent,
-    ).length;
+    const successes = independentReviewCount(attempts, c.id);
     return age >= Math.min(14, 2 ** Math.min(successes - 1, 4));
   });
   const nextLesson =
@@ -284,7 +295,13 @@ function KakuAppContent({ initialView }: { initialView: View }) {
             Number.isInteger(a.retries) &&
             a.retries >= 0 &&
             Number.isInteger(a.hints) &&
-            a.hints >= 0,
+            a.hints >= 0 &&
+            (a.practiceStage === undefined ||
+              [0, 1, 2].includes(a.practiceStage)) &&
+            (a.sessionId === undefined ||
+              (typeof a.sessionId === "string" && a.sessionId.length <= 100)) &&
+            (!(a.practiceStage === 0 || a.practiceStage === 1) ||
+              !a.independent),
         )
       )
         throw new Error("Invalid backup");
@@ -1027,9 +1044,9 @@ function KakuAppContent({ initialView }: { initialView: View }) {
                   icon={<Flame size={20} />}
                 />
                 <StatCard
-                  label={t("Practice sessions")}
+                  label={t("Writing attempts")}
                   value={attempts.length}
-                  detail={t("completed character cycles")}
+                  detail={t("completed writing attempts")}
                   icon={<BookOpen size={20} />}
                 />
               </div>
@@ -1108,7 +1125,12 @@ function KakuAppContent({ initialView }: { initialView: View }) {
                               <strong>
                                 {displayReading(character.reading)}
                               </strong>
-                              <small>{t(character.script)}</small>
+                              <small>
+                                {t(character.script)}
+                                {attempt.practiceStage !== undefined && (
+                                  <> · {t(stageNames[attempt.practiceStage])}</>
+                                )}
+                              </small>
                             </div>
                             {attempt.independent ? (
                               <span className="history-label independent">
@@ -1306,13 +1328,23 @@ function KakuAppContent({ initialView }: { initialView: View }) {
           )}
           {initialView === "practice" && (
             <Practice
-              key={`${activeLesson.id}-${query.get("characters")}-${query.get("session")}`}
+              key={`${activeLesson.id}-${query.get("characters")}-${query.get("session")}-${query.get("mode")}-${query.get("count")}-${query.get("start")}`}
               lesson={activeLesson}
+              repetition={
+                query.get("mode") === "repeat" &&
+                activeLesson.characters.length === 1
+                  ? parseRepetition(query.get("count"), query.get("start"))
+                  : undefined
+              }
               settings={settings}
               onAttempt={saveAttempt}
               onExit={() =>
                 router.push(
-                  activeLesson.id === "review" ? "/review/" : "/lessons/",
+                  query.get("mode") === "repeat"
+                    ? "/library/"
+                    : activeLesson.id === "review"
+                      ? "/review/"
+                      : "/lessons/",
                 )
               }
               onRepeat={(selected) => startCustom(selected)}
@@ -1359,66 +1391,87 @@ function KakuAppContent({ initialView }: { initialView: View }) {
         </div>
       )}
       {detail && (
-        <Modal onClose={() => setDetail(null)} label={t("Character details")}>
-          <span className="eyebrow">
-            {t(detail.script)} · {t(detail.group)}
-          </span>
-          <div className="detail-symbol">{detail.symbol}</div>
-          <h2 className="detail-reading">
-            {displayReading(detail.reading)}
-            <button
-              className="audio-button"
-              aria-label={t("Play pronunciation")}
-              disabled={!settings.sound}
-              onClick={() => {
-                setDetailAudioError("");
-                void speakCharacter(detail).then((message) => {
-                  if (message) setDetailAudioError(message);
-                });
+        <Modal
+          onClose={() => setDetail(null)}
+          label={t(detailSetup ? "Practice setup" : "Character details")}
+        >
+          {detailSetup ? (
+            <PracticeSetup
+              character={detail}
+              onBack={() => setDetailSetup(false)}
+              onStart={(options) => {
+                if (options)
+                  router.push(
+                    `/practice/?lesson=${detail.lessonId}&characters=${detail.id}&mode=repeat&count=${options.count}&start=${options.start}&session=${Date.now()}`,
+                  );
+                else startCustom([detail], false);
+                setDetail(null);
               }}
-            >
-              <Volume2 size={20} />
-            </button>
-          </h2>
-          {detailAudioError && <p role="status">{t(detailAudioError)}</p>}
-          <p>
-            {t(
-              detail.paths.length === 1 ? "{count} stroke" : "{count} strokes",
-              { count: detail.paths.length },
-            )}{" "}
-            ·{" "}
-            {practiced.has(detail.id)
-              ? t("Practiced before")
-              : t("A new little beginning")}
-          </p>
-          <div className="detail-stroke-preview">
-            {detail.paths.map((path, i) => (
-              <svg key={i} viewBox="0 0 109 109">
-                <text x="5" y="15" fontSize="12" fill="#87917e">
-                  {n(i + 1)}
-                </text>
-                {detail.paths.slice(0, i + 1).map((p, j) => (
-                  <path
-                    d={p}
-                    key={j}
-                    fill="none"
-                    stroke={j === i ? "#4a6540" : "#d4d9cb"}
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                  />
+            />
+          ) : (
+            <>
+              <span className="eyebrow">
+                {t(detail.script)} · {t(detail.group)}
+              </span>
+              <div className="detail-symbol">{detail.symbol}</div>
+              <h2 className="detail-reading">
+                {displayReading(detail.reading)}
+                <button
+                  className="audio-button"
+                  aria-label={t("Play pronunciation")}
+                  disabled={!settings.sound}
+                  onClick={() => {
+                    setDetailAudioError("");
+                    void speakCharacter(detail).then((message) => {
+                      if (message) setDetailAudioError(message);
+                    });
+                  }}
+                >
+                  <Volume2 size={20} />
+                </button>
+              </h2>
+              {detailAudioError && <p role="status">{t(detailAudioError)}</p>}
+              <p>
+                {t(
+                  detail.paths.length === 1
+                    ? "{count} stroke"
+                    : "{count} strokes",
+                  { count: detail.paths.length },
+                )}{" "}
+                ·{" "}
+                {practiced.has(detail.id)
+                  ? t("Practiced before")
+                  : t("A new little beginning")}
+              </p>
+              <div className="detail-stroke-preview">
+                {detail.paths.map((path, i) => (
+                  <svg key={i} viewBox="0 0 109 109">
+                    <text x="5" y="15" fontSize="12" fill="#87917e">
+                      {n(i + 1)}
+                    </text>
+                    {detail.paths.slice(0, i + 1).map((p, j) => (
+                      <path
+                        d={p}
+                        key={j}
+                        fill="none"
+                        stroke={j === i ? "#4a6540" : "#d4d9cb"}
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                      />
+                    ))}
+                  </svg>
                 ))}
-              </svg>
-            ))}
-          </div>
-          <button
-            className="button-primary"
-            onClick={() => {
-              startCustom([detail], false);
-              setDetail(null);
-            }}
-          >
-            {t("Practice this character")} <ArrowRight size={17} />
-          </button>
+              </div>
+              <button
+                className="button-primary"
+                onClick={() => {
+                  setDetailSetup(true);
+                }}
+              >
+                {t("Practice this character")} <ArrowRight size={17} />
+              </button>
+            </>
+          )}
         </Modal>
       )}
       {helpOpen && (

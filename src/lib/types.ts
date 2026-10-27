@@ -26,6 +26,8 @@ export type Attempt = {
   independent: boolean;
   retries: number;
   hints: number;
+  practiceStage?: 0 | 1 | 2;
+  sessionId?: string;
 };
 export type Settings = {
   dailyGoal: number;
