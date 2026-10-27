@@ -116,7 +116,8 @@ export function PwaProvider({ children }: { children: React.ReactNode }) {
     const message = (event: MessageEvent) => {
       if (event.data?.type === "CAN_RELOAD") {
         event.ports[0]?.postMessage(
-          !window.location.pathname.startsWith("/practice") && !busy.current,
+          !/^\/(practice|quiz)(\/|$)/.test(window.location.pathname) &&
+            !busy.current,
         );
       }
       if (event.data?.type === "UPDATE_BLOCKED") setBlocked(true);
@@ -209,7 +210,7 @@ export function PwaProvider({ children }: { children: React.ReactNode }) {
       }}
     >
       {children}
-      {waiting && pathname !== "/practice/" && pathname !== "/practice" && (
+      {waiting && !/^\/(practice|quiz)(\/|$)/.test(pathname) && (
         <aside className="pwa-update" aria-label={t("App update")}>
           <p role="status">
             {t(

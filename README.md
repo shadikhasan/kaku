@@ -14,6 +14,7 @@ Kaku (書く) means “to write” in Japanese. No account, API key, or applicat
 - **English and Bangla interface:** choose your interface language in Settings; your preference is saved on this device.
 - **Readings and pronunciation:** Bengali pronunciation aids alongside romaji, with 46 recorded pronunciations shared between both scripts. One tap plays one pronunciation; no Japanese voice installation is needed.
 - **Progress and review:** daily goals, streaks, practice history, scheduled review, and custom character selections.
+- **Kana Challenge:** a 10- or 20-question recognition quiz with selected rows, mixed scripts, an optional 15-second timer, and English or Bangla answers. Start from Home or quiz an individual lesson. Retry mistakes or open them in handwriting practice. Quiz results and personal bests stay on this device, separate from handwriting mastery; progress backups currently contain handwriting history only.
 - **Local storage and backups:** progress saved on the device, with JSON export, import, and reset controls.
 - **Desktop and mobile input:** mouse, touch, and stylus support, writing grids, and reduced-motion settings.
 - **Phone navigation:** five bottom tabs, a compact Settings/Help/Install menu, and more writing space during practice. Larger screens use the sidebar.

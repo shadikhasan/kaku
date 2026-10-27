@@ -43,6 +43,7 @@ import type {
   View,
 } from "@/lib/types";
 import Practice from "./practice";
+import Quiz from "./quiz";
 import { PwaSettings } from "./pwa-settings";
 import { MobileMenu } from "./mobile-menu";
 import { stopPronunciation, speakCharacter } from "@/lib/speech";
@@ -319,11 +320,14 @@ function KakuAppContent({ initialView }: { initialView: View }) {
     day: "numeric",
   });
   const title =
-    initialView === "practice"
-      ? "Writing practice"
-      : initialView === "settings"
-        ? "Settings"
-        : (navigation.find((n) => n.view === initialView)?.label ?? "Overview");
+    initialView === "quiz"
+      ? "Kana Challenge"
+      : initialView === "practice"
+        ? "Writing practice"
+        : initialView === "settings"
+          ? "Settings"
+          : (navigation.find((n) => n.view === initialView)?.label ??
+            "Overview");
 
   return (
     <div
@@ -508,6 +512,21 @@ function KakuAppContent({ initialView }: { initialView: View }) {
                   </span>
                 </div>
               </section>
+              <Link href="/quiz/" className="quiz-home-card">
+                <span className="quiz-home-icon">
+                  <Target size={27} />
+                </span>
+                <div>
+                  <span className="eyebrow">
+                    {t("A LITTLE CHALLENGE, EVERY DAY")}
+                  </span>
+                  <h2>{t("Kana Challenge")}</h2>
+                  <p>{t("How many characters do you remember?")}</p>
+                </div>
+                <span className="quiz-home-action">
+                  {t("Quick quiz")} <ArrowRight size={18} />
+                </span>
+              </Link>
               <div className="dashboard-middle">
                 <section className="learning-section">
                   <div className="section-heading">
@@ -714,57 +733,67 @@ function KakuAppContent({ initialView }: { initialView: View }) {
                       practiced.has(c.id),
                     ).length;
                     return (
-                      <button
-                        key={lesson.id}
-                        className="lesson-row"
-                        onClick={() => startLesson(lesson)}
-                      >
-                        <span
-                          className={`lesson-number ${count === lesson.characters.length ? "lesson-done" : ""}`}
+                      <div key={lesson.id} className="quiz-lesson-wrapper">
+                        <button
+                          className="lesson-row"
+                          onClick={() => startLesson(lesson)}
                         >
-                          {count === lesson.characters.length ? (
-                            <Check size={20} />
-                          ) : (
-                            n(lesson.number).padStart(2, n(0))
-                          )}
-                        </span>
-                        <div className="lesson-row-info">
-                          <h3>{t(lesson.name)}</h3>
-                          <span>
-                            <span lang="bn">
-                              {lesson.characters
-                                .map(
-                                  (c) => banglaReadings[c.reading] ?? c.reading,
-                                )
-                                .join(" · ")}
-                            </span>
-                            <span lang="ja-Latn">
-                              {lesson.characters
-                                .map((c) => c.reading)
-                                .join(" · ")}
-                            </span>
+                          <span
+                            className={`lesson-number ${count === lesson.characters.length ? "lesson-done" : ""}`}
+                          >
+                            {count === lesson.characters.length ? (
+                              <Check size={20} />
+                            ) : (
+                              n(lesson.number).padStart(2, n(0))
+                            )}
                           </span>
-                        </div>
-                        <div className="lesson-preview">
-                          {lesson.characters.map((c) => (
-                            <span
-                              key={c.id}
-                              className={practiced.has(c.id) ? "practiced" : ""}
-                            >
-                              {c.symbol}
+                          <div className="lesson-row-info">
+                            <h3>{t(lesson.name)}</h3>
+                            <span>
+                              <span lang="bn">
+                                {lesson.characters
+                                  .map(
+                                    (c) =>
+                                      banglaReadings[c.reading] ?? c.reading,
+                                  )
+                                  .join(" · ")}
+                              </span>
+                              <span lang="ja-Latn">
+                                {lesson.characters
+                                  .map((c) => c.reading)
+                                  .join(" · ")}
+                              </span>
                             </span>
-                          ))}
-                        </div>
-                        <span className="lesson-completion">
-                          {t("{done}/{total} practiced", {
-                            done: count,
-                            total: lesson.characters.length,
-                          })}
-                        </span>
-                        <span className="lesson-go">
-                          <ArrowRight size={19} />
-                        </span>
-                      </button>
+                          </div>
+                          <div className="lesson-preview">
+                            {lesson.characters.map((c) => (
+                              <span
+                                key={c.id}
+                                className={
+                                  practiced.has(c.id) ? "practiced" : ""
+                                }
+                              >
+                                {c.symbol}
+                              </span>
+                            ))}
+                          </div>
+                          <span className="lesson-completion">
+                            {t("{done}/{total} practiced", {
+                              done: count,
+                              total: lesson.characters.length,
+                            })}
+                          </span>
+                          <span className="lesson-go">
+                            <ArrowRight size={19} />
+                          </span>
+                        </button>
+                        <Link
+                          className="quiz-lesson-link"
+                          href={`/quiz/?lesson=${lesson.id}`}
+                        >
+                          {t("Quiz this lesson")} <ArrowRight size={15} />
+                        </Link>
+                      </div>
                     );
                   })}
               </div>
@@ -1259,6 +1288,12 @@ function KakuAppContent({ initialView }: { initialView: View }) {
             </div>
           )}
 
+          {initialView === "quiz" && (
+            <Quiz
+              settings={settings}
+              onPractice={(selected) => startCustom(selected)}
+            />
+          )}
           {initialView === "practice" && (
             <Practice
               key={`${activeLesson.id}-${query.get("characters")}-${query.get("session")}`}

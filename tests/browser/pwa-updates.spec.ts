@@ -53,7 +53,7 @@ const test = base.extend<{
             bytes
               .toString()
               .replace(
-                /const BUILD = '[^']+'/,
+                /const BUILD = ["'][^"']+["']/,
                 `const BUILD = 'test-release-${state.version}'`,
               ),
           );
@@ -140,7 +140,7 @@ test("failed initial cache can be retried; failed upgrade preserves the working 
   ).toEqual(["kaku-core-test-release-1"]);
 });
 
-test("updates protect practice in another tab and retain preferences and old audio", async ({
+test("updates protect practice and quizzes in another tab and retain preferences and old audio", async ({
   page,
   context,
   release,
@@ -175,6 +175,18 @@ test("updates protect practice in another tab and retain preferences and old aud
     page.getByText("Finish practice in all open Kaku tabs, then try again."),
   ).toBeVisible();
   await expect(practice.locator("canvas")).toBeVisible();
+  await practice.goto(`${release.url}/quiz/`);
+  await practice
+    .getByRole("button", { name: "Start quiz", exact: true })
+    .click();
+  await expect(practice.locator(".quiz-character")).toBeVisible();
+  await expect(
+    practice.getByRole("button", { name: "Update and reload" }),
+  ).toHaveCount(0);
+  await page.getByRole("button", { name: "Update and reload" }).click();
+  await expect(
+    page.getByText("Finish practice in all open Kaku tabs, then try again."),
+  ).toBeVisible();
   await practice.goto(`${release.url}/lessons/`);
   await expect(practice.locator(".lesson-row")).toHaveCount(10);
   await Promise.all([

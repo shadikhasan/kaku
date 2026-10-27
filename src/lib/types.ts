@@ -6,7 +6,8 @@ export type View =
   | "review"
   | "progress"
   | "settings"
-  | "practice";
+  | "practice"
+  | "quiz";
 export type Point = { x: number; y: number };
 export type Character = {
   id: string;

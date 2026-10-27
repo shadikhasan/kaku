@@ -11,6 +11,7 @@ export function generateStaticParams() {
     "progress",
     "settings",
     "practice",
+    "quiz",
   ].map((view) => ({ view }));
 }
 
