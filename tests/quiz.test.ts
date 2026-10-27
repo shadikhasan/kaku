@@ -54,9 +54,11 @@ describe("quiz question generation", () => {
       script: "hiragana",
       rows: [2, 0],
       count: 10,
-      timed: false,
+      timed: true,
     });
     expect(quizKey(options)).toBe(quizKey({ ...options, rows: [0, 2] }));
-    expect(quizKey(options)).not.toBe(quizKey({ ...options, timed: true }));
+    expect(quizKey(options)).not.toBe(quizKey({ ...options, timed: false }));
+    expect(parseQuizOptions(undefined).timed).toBe(true);
+    expect(parseQuizOptions({ timed: false }).timed).toBe(false);
   });
 });

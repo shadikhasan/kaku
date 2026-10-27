@@ -109,6 +109,7 @@
   text-align: right;
 }
 .quiz-timer-setting {
+  position: relative;
   border-top: 1px solid var(--line);
   padding-top: 22px;
   cursor: pointer;
@@ -120,6 +121,59 @@
   display: block;
   color: #687160;
   margin-top: 6px;
+}
+.quiz-timer-setting > input {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+.quiz-timer-setting:has(input:focus-visible) {
+  outline: 3px solid #9aaa7d;
+  outline-offset: 5px;
+  border-radius: 8px;
+}
+.quiz-timer-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: #687160;
+}
+.quiz-timer-track {
+  display: block;
+  position: relative;
+  width: 44px;
+  height: 26px;
+  border-radius: 20px;
+  background: #858b7e;
+  transition: background 0.18s;
+}
+.quiz-timer-track::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 3px #303a3020;
+  transition: transform 0.18s;
+}
+.quiz-timer-setting input:checked + .quiz-timer-control {
+  color: var(--green-dark);
+}
+.quiz-timer-setting input:checked + .quiz-timer-control .quiz-timer-track {
+  background: var(--green);
+}
+.quiz-timer-setting input:checked + .quiz-timer-control .quiz-timer-track::after {
+  transform: translateX(18px);
 }
 .quiz-hint {
   color: #687160;

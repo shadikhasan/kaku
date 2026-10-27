@@ -14,6 +14,8 @@ export const bangla: Record<string, string> = {
   "Select all": "সব নির্বাচন",
   "Number of questions": "প্রশ্নের সংখ্যা",
   "Question timer": "প্রশ্নের টাইমার",
+  "15 seconds per question": "প্রতি প্রশ্নে ১৫ সেকেন্ড",
+  "Play at your own pace, without a timer": "সময় ছাড়াই নিজের গতিতে খেলো",
   "Optional · 15 seconds per question": "ঐচ্ছিক · প্রতি প্রশ্নে ১৫ সেকেন্ড",
   On: "চালু",
   Off: "বন্ধ",

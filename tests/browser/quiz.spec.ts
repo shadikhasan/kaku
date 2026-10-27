@@ -1,6 +1,40 @@
 import { expect, test } from "@playwright/test";
 import characters from "../../src/data/kana.json" with { type: "json" };
 
+test("timer defaults on, supports row and keyboard toggles, and remembers off", async ({
+  page,
+}, info) => {
+  await page.goto("/quiz/");
+  const timer = page.getByRole("switch", {
+    name: "Question timer",
+    exact: true,
+  });
+  await expect(timer).toBeEnabled();
+  await expect(timer).toBeChecked();
+  await expect(
+    page.getByText("15 seconds per question", { exact: true }),
+  ).toBeVisible();
+  await page.getByText("Question timer", { exact: true }).click();
+  await expect(timer).not.toBeChecked();
+  await expect(
+    page.getByText("Play at your own pace, without a timer", { exact: true }),
+  ).toBeVisible();
+  await timer.focus();
+  await page.keyboard.press("Space");
+  await expect(timer).toBeChecked();
+  await page.keyboard.press("Space");
+  await expect(timer).not.toBeChecked();
+  await page.reload();
+  await expect(timer).toBeEnabled();
+  await expect(timer).not.toBeChecked();
+  await page.screenshot({
+    path: `test-results/quiz-timer-off-${info.project.name}.png`,
+    fullPage: true,
+  });
+  await page.getByRole("button", { name: "Start quiz", exact: true }).click();
+  await expect(page.locator(".quiz-live-stats")).not.toContainText("seconds");
+});
+
 test("home quiz completes, saves a best score and keeps writing progress separate", async ({
   page,
 }, info) => {

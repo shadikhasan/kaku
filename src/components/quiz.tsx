@@ -112,6 +112,13 @@ export default function Quiz({
 
   useEffect(() => {
     if (!loaded) return;
+    db.quizPreferences
+      .put({ key: "options", value: options })
+      .catch(() => setStorageError(true));
+  }, [loaded, options]);
+
+  useEffect(() => {
+    if (!loaded) return;
     let cancelled = false;
     setBest(null);
     db.quizResults
@@ -205,10 +212,6 @@ export default function Quiz({
     locked.current = false;
     advanced.current = -1;
     setPhase("playing");
-    if (!isRetry)
-      db.quizPreferences
-        .put({ key: "options", value: options })
-        .catch(() => setStorageError(true));
   }
 
   async function next() {
@@ -354,18 +357,30 @@ export default function Quiz({
             </fieldset>
             <label className="quiz-timer-setting">
               <span>
-                <strong>{t("Question timer")}</strong>
-                <small>{t("Optional · 15 seconds per question")}</small>
+                <strong id="quiz-timer-label">{t("Question timer")}</strong>
+                <small id="quiz-timer-description">
+                  {t(
+                    options.timed
+                      ? "15 seconds per question"
+                      : "Play at your own pace, without a timer",
+                  )}
+                </small>
               </span>
               <input
                 type="checkbox"
                 role="switch"
+                aria-labelledby="quiz-timer-label"
+                aria-describedby="quiz-timer-description"
+                disabled={!loaded}
                 checked={options.timed}
                 onChange={(event) =>
                   setOptions({ ...options, timed: event.target.checked })
                 }
               />
-              <span>{t(options.timed ? "On" : "Off")}</span>
+              <span className="quiz-timer-control" aria-hidden="true">
+                <span>{t(options.timed ? "On" : "Off")}</span>
+                <span className="quiz-timer-track" />
+              </span>
             </label>
             <p className="quiz-hint">
               {t("Questions and choices stay within your selected rows.")}

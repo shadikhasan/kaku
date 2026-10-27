@@ -25,7 +25,7 @@ export const defaultQuizOptions: QuizOptions = {
   script: "hiragana",
   rows: [0],
   count: 10,
-  timed: false,
+  timed: true,
 };
 
 export function parseQuizOptions(value: unknown): QuizOptions {
@@ -42,7 +42,7 @@ export function parseQuizOptions(value: unknown): QuizOptions {
         ]
       : [0],
     count: v.count === 20 ? 20 : 10,
-    timed: v.timed === true,
+    timed: typeof v.timed === "boolean" ? v.timed : defaultQuizOptions.timed,
   };
 }
 
